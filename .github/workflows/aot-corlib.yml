@@ -1,0 +1,30 @@
+name: AOT CoreLib (iOS)
+on:
+  push:
+    branches: [main]
+    paths: ['aot/**', '.github/workflows/aot-corlib.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Precompile CoreLib
+        run: |
+          chmod +x aot/build-corlib.sh
+          aot/build-corlib.sh 2>&1 | tee build-log.txt
+      - name: Save results to the "builds" branch
+        if: always()
+        run: |
+          mkdir -p /tmp/res && cp -R out/. /tmp/res/ 2>/dev/null || true
+          cp build-log.txt /tmp/res/ 2>/dev/null || true
+          git config user.name "build bot"; git config user.email "actions@users.noreply.github.com"
+          git fetch origin builds || true
+          git checkout -B builds origin/builds 2>/dev/null || git checkout --orphan builds
+          git rm -rf . -q || true
+          mkdir -p aot-corlib && cp -R /tmp/res/. aot-corlib/
+          git add aot-corlib
+          git commit -m "AOT CoreLib build ${{ github.run_number }}" || true
+          git push origin builds
