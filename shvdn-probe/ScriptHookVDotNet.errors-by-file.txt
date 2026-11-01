@@ -1,0 +1,7 @@
+  24 shvdn/source/core/Console/KeyManager.cs
+  16 shvdn/source/core/Config/Ini.cs
+   8 shvdn/source/core/Scripting/ScriptDomain.cs
+   8 shvdn/source/core/Input/KeyboardEvent.cs
+   8 shvdn/source/core/Console/Console.cs
+   6 shvdn/source/core/Scripting/Script.cs
+   4 shvdn/source/core/Input/Keyboard.cs
