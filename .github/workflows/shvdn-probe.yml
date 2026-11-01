@@ -1,0 +1,26 @@
+name: SHVDN probe (.NET 8)
+on:
+  push:
+    branches: [main]
+    paths: ['shvdn/**', '.github/workflows/shvdn-probe.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with: { dotnet-version: '8.0.x' }
+      - name: Probe
+        run: shvdn/probe.sh
+      - name: Save results to the "builds" branch
+        if: always()
+        run: |
+          mkdir -p /tmp/res && cp -R out-shvdn/. /tmp/res/ 2>/dev/null || true
+          git config user.name "build bot"; git config user.email "actions@users.noreply.github.com"
+          git fetch origin builds && git checkout -B builds origin/builds
+          rm -rf shvdn-probe && mkdir -p shvdn-probe && cp -R /tmp/res/. shvdn-probe/
+          git add shvdn-probe && git commit -m "SHVDN probe ${{ github.run_number }}" || true
+          git push origin builds
