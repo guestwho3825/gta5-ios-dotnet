@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>HelloIOS</AssemblyName>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src-shvdn/source/scripting_v3/ScriptHookVDotNet_APIv3.csproj" Private="false" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>PostHook.DotNet</AssemblyName>
+    <Nullable>disable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src-shvdn/source/core/ScriptHookVDotNet.csproj" />
+    <ProjectReference Include="../forms/System.Windows.Forms.csproj" />
+  </ItemGroup>
+</Project>

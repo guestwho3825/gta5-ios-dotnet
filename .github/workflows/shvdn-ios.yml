@@ -1,0 +1,28 @@
+name: ScriptHookV .NET for iOS
+on:
+  push:
+    branches: [main]
+    paths: ['shvdn/**', '.github/workflows/shvdn-ios.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with: { dotnet-version: '8.0.x' }
+      - name: Build
+        run: shvdn/build-ios.sh 2>&1 | tee build-log.txt
+      - name: Save results to the "builds" branch
+        if: always()
+        run: |
+          mkdir -p /tmp/res && cp build-log.txt /tmp/res/ || true
+          cp -R out-shvdn-ios/dotnet out-shvdn-ios/dotnet-scripts /tmp/res/ 2>/dev/null || true
+          cp out-shvdn-ios/*.log /tmp/res/ 2>/dev/null || true
+          git config user.name "build bot"; git config user.email "actions@users.noreply.github.com"
+          git fetch origin builds && git checkout -B builds origin/builds
+          rm -rf shvdn-ios && mkdir -p shvdn-ios && cp -R /tmp/res/. shvdn-ios/
+          git add shvdn-ios && git commit -m "SHVDN iOS build ${{ github.run_number }}" || true
+          git push origin builds

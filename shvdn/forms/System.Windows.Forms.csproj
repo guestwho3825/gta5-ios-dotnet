@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Stand-in for the Windows Forms types that ScriptHookV .NET and mods use (keys and key events).
+       Same assembly name and version as Windows Forms, so mods built against it bind to this. -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>System.Windows.Forms</AssemblyName>
+    <RootNamespace>System.Windows.Forms</RootNamespace>
+    <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <FileVersion>4.0.0.0</FileVersion>
+    <Nullable>disable</Nullable>
+    <NoWarn>CS1591</NoWarn>
+  </PropertyGroup>
+</Project>
