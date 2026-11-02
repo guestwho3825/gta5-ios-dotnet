@@ -51,7 +51,10 @@ bench() {  # repo commit name srcsubdir uses_lemon
   local repo=$1 commit=$2 name=$3 sub=$4 lemon=$5 d="$W/bench/$3"
   git clone -q https://github.com/$repo "$d" && git -C "$d" checkout -q $commit || { echo "BENCH $name: clone failed"; return; }
   local L=""; [ "$lemon" = 1 ] && L="$W/lemonout/LemonUI.SHVDN3.dll"
-  if dotnet build "$H/mods/Generic.csproj" -c Release -nologo -p:SRC="$d/$sub" -p:NAME="$name" -p:LEMONDLL="$L" -o "$W/bench-out/$name" > "$OUT/bench-$name-build.log" 2>&1; then
+  # natives these mods call by names older ScriptHookV .NET versions used (the built mods carry the numbers)
+  grep -rl "Hash\._" "$d" --include=*.cs | while read -r f; do
+    sed -i '' -e 's/Hash\._DOOR_CONTROL/(Hash)0x9B12F9A24FABEDB0/g' -e 's/Hash\._IS_VEHICLE_ROCKET_BOOST_ACTIVE/(Hash)0x3D34E80EED4AE3BE/g' "$f"; done
+  if dotnet build "$H/mods/Generic.csproj" -c Release -nologo -p:SRC="$d/$sub" -p:NAME="$name" -p:LEMONDLL="$L" -p:SHVDNBUILD="$ROOT/out-shvdn-ios/build" -o "$W/bench-out/$name" > "$OUT/bench-$name-build.log" 2>&1; then
     cp "$W/bench-out/$name/$name.dll" "$DOCS/scripts/"; echo "BENCH $name: built"
   else echo "BENCH $name: build failed"; grep -E " error " "$OUT/bench-$name-build.log" | sed 's/.*error/error/' | sort -u | head -5; fi
 }
