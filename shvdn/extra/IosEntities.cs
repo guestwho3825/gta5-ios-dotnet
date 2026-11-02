@@ -2,6 +2,8 @@
 // with its script-ID pool protection), made on the game thread. Model and distance filters are applied there too,
 // so a whole GetNearbyPeds etc. is a single trip to the game thread.
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
 
 namespace SHVDN
@@ -25,6 +27,27 @@ namespace SHVDN
             for (int i = 0; i < n; i++) b[i] = s[i] < 128 ? (byte)s[i] : (byte)'?';
             b[n] = 0;
             Breadcrumb(b);
+        }
+
+        // scripts turned off after they crashed the game (the native side writes the list; one name per line)
+        static HashSet<string> s_disabled;
+        public static bool IsDisabled(string name)
+        {
+            if (s_disabled == null)
+            {
+                var set = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+                try
+                {
+                    string docs = Environment.GetEnvironmentVariable("PH_DOCS");
+                    string f = docs == null ? null : Path.Combine(docs, "posthook", "disabled-scripts.txt");
+                    if (f != null && File.Exists(f))
+                        foreach (string line in File.ReadAllLines(f))
+                            if (line.Trim().Length > 0) set.Add(line.Trim());
+                }
+                catch { }
+                s_disabled = set;
+            }
+            return name != null && s_disabled.Contains(name);
         }
 
         public static int[] Get(int which, FVector3? position, float radius, int[] modelHashes)

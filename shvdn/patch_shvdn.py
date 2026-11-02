@@ -108,5 +108,5 @@ edit(SC, 'Thread th = new Thread(MainLoop);', 'Thread th = new Thread(MainLoop, 
 SDOM = C + 'Scripting/ScriptDomain.cs'
 edit(SDOM, 'script.StopwatchForTimeout.Restart();', 'IosEntities.Crumb(script.Name);  // iOS: last-moments breadcrumb\n                script.StopwatchForTimeout.Restart();')
 edit(SDOM, 'Log.Message(Log.Level.Debug, "Instantiating script ", scriptType.FullName, " ...");',
-     'Log.Message(Log.Level.Debug, "Instantiating script ", scriptType.FullName, " ...");\n            IosEntities.Crumb("creating " + scriptType.FullName);  // iOS')
+     'Log.Message(Log.Level.Debug, "Instantiating script ", scriptType.FullName, " ...");\n            IosEntities.Crumb("creating " + scriptType.FullName);  // iOS\n            if (IosEntities.IsDisabled(scriptType.FullName)) { Log.Message(Log.Level.Warning, "Not starting ", scriptType.FullName, ": it crashed the game before (remove it from posthook/disabled-scripts.txt to try again)."); return null; }')
 print("SHVDN patched for iOS")
