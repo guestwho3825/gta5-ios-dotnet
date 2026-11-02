@@ -14,3 +14,11 @@ STUB "_?createTexture@@YAHPEBD@Z", _shv_createTexture
 STUB "_?drawTexture@@YAXHHHHMMMMMMMMMMMM@Z", _shv_drawTexture
 STUB "_?getGameVersion@@YA?AW4eGameVersion@@XZ", _shv_getGameVersion
 STUB "_?getGlobalPtr@@YAPEA_KH@Z", _shv_getGlobalPtr
+
+// Stands in for PC game functions that don't exist on iOS: does nothing, returns 0 (integer and float).
+.globl _shv_null_stub
+.p2align 2
+_shv_null_stub:
+  mov x0, #0
+  movi d0, #0
+  ret

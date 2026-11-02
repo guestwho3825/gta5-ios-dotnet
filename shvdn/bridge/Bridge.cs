@@ -25,6 +25,21 @@ namespace PostHook
             return IntPtr.Zero;
         }
 
+        // ScriptHookV .NET finds some PC game functions by searching the game's code for byte patterns; those don't exist
+        // on iOS, so it has no address for them. A mod that used one called address 0 and the game died without a word.
+        // Every missing one now points at a native stub that does nothing and returns 0 (callers treat 0 as "not found").
+        static void FillMissingGameFunctions()
+        {
+            IntPtr hook = Resolve("ScriptHookV.dll");
+            IntPtr stub = hook == IntPtr.Zero ? IntPtr.Zero : NativeLibrary.GetExport(hook, "shv_null_stub");
+            if (stub == IntPtr.Zero) { SHVDN.Log.Message(SHVDN.Log.Level.Error, "iOS: no stub for missing game functions"); return; }
+            int n = 0;
+            foreach (Type t in typeof(SHVDN.ScriptHookVDotNet).Assembly.GetTypes())
+                foreach (MethodInfo m in t.GetMethods(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.DeclaredOnly))
+                    if (m.Name.StartsWith("IosFill_", StringComparison.Ordinal)) { m.Invoke(null, new object[] { stub }); n++; }
+            SHVDN.Log.Message(SHVDN.Log.Level.Info, "iOS: ", n.ToString(), " PC-only game functions point at a safe stub");
+        }
+
         // Called once, on the .NET thread, after the runtime starts. Returns null on success, else the error.
         public static string Init(long getTls, long setTls, int gameThreadId)
         {
@@ -79,6 +94,7 @@ namespace PostHook
                 if (File.Exists(hello) && !File.Exists(Path.Combine(bundled, "HelloIOS.dll"))) File.Delete(hello);
 
                 SHVDN.ScriptHookVDotNet.Init(new IntPtr(getTls), new IntPtr(setTls), IntPtr.Zero, (uint)gameThreadId);
+                FillMissingGameFunctions();
                 return null;
             }
             catch (Exception ex) { return ex.ToString(); }

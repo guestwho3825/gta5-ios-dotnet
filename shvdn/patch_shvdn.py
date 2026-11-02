@@ -112,4 +112,17 @@ edit(SDOM, 'Log.Message(Log.Level.Debug, "Instantiating script ", scriptType.Ful
 # ---- a script thread must never let an error escape (on iOS that ends the game): stop that script, log it ----
 regex(SC, r'(catch \(ThreadAbortException ex\)\s*\{\s*Log\.Message\(Log\.Level\.Warning, "Aborted script ", Name, "\.", Environment\.NewLine, ex\.StackTrace\);\s*\})',
       r'\1\n            catch (Exception ex)  // iOS\n            {\n                IsRunning = false;\n                try { Log.Message(Log.Level.Error, "Script ", Name, " stopped by an error: ", ex.ToString()); } catch { }\n                try { _waitEvent.Release(); } catch { }\n            }')
+# ---- PC game functions found by byte patterns don't exist on iOS: calling one (a null pointer) killed the game.
+# Each such field gets an IosFill_ method; the bridge points every missing one at a native stub that returns 0. ----
+NMEM = C + 'Game/NativeMemory.cs'
+src = open(NMEM, encoding='utf-8-sig').read()
+fields = re.findall(r'((?:private|internal|public) static) readonly (delegate\* unmanaged\[\w+\]<[^;]*?>) (s_\w+);', src)
+for vis, typ, name in fields:
+    old = f'{vis} readonly {typ} {name};'
+    new = (f'{vis} {typ} {name};  // iOS: not readonly, see IosFill_{name}\n'
+           f'        internal static void IosFill_{name}(IntPtr stub) {{ if ({name} == null) {name} = ({typ})(void*)stub; }}')
+    if src.count(old) != 1: sys.exit(f'patch failed: function pointer field {name}')
+    src = src.replace(old, new)
+open(NMEM, 'w', encoding='utf-8').write(src)
+print(f"{len(fields)} game function pointers made fillable")
 print("SHVDN patched for iOS")
