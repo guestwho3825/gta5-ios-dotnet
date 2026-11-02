@@ -104,4 +104,9 @@ edit(SC, '_thread.Abort();',
      'if (System.Threading.Thread.CurrentThread != _thread) { try { _continueEvent.Release(); } catch { } }  // iOS: no Thread.Abort in .NET 8; the thread sees IsRunning == false and ends')
 regex(SC, r'DoTick\(\);(\s*// Yield execution to next tick)', r'DoTick();\n                    if (!IsRunning) break;  // iOS: stopped (no thread abort)\1')
 edit(SC, 'Thread th = new Thread(MainLoop);', 'Thread th = new Thread(MainLoop, 16 * 1024 * 1024);  // iOS: 16 MB stack (iOS gives 512 KB; the interpreter needs more)')
+# ---- breadcrumbs: which script is being created / ticked, for the native last-moments file ----
+SDOM = C + 'Scripting/ScriptDomain.cs'
+edit(SDOM, 'script.StopwatchForTimeout.Restart();', 'IosEntities.Crumb(script.Name);  // iOS: last-moments breadcrumb\n                script.StopwatchForTimeout.Restart();')
+edit(SDOM, 'Log.Message(Log.Level.Debug, "Instantiating script ", scriptType.FullName, " ...");',
+     'Log.Message(Log.Level.Debug, "Instantiating script ", scriptType.FullName, " ...");\n            IosEntities.Crumb("creating " + scriptType.FullName);  // iOS')
 print("SHVDN patched for iOS")

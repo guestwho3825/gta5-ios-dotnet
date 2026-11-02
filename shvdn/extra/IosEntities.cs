@@ -13,6 +13,20 @@ namespace SHVDN
         [DllImport("ScriptHookV.dll", EntryPoint = "shv_worldGetFiltered", ExactSpelling = true)]
         static extern int WorldGetFiltered(int which, int* arr, int size, float* pos, float radius, int* models, int nModels);
 
+        [DllImport("ScriptHookV.dll", EntryPoint = "shv_breadcrumb", ExactSpelling = true)]
+        static extern void Breadcrumb(byte* s);
+
+        // tells the native side which mod script is running, so a crash note can name it
+        public static void Crumb(string s)
+        {
+            if (s == null) { Breadcrumb(null); return; }
+            int n = Math.Min(s.Length, 120);
+            byte* b = stackalloc byte[n + 1];
+            for (int i = 0; i < n; i++) b[i] = s[i] < 128 ? (byte)s[i] : (byte)'?';
+            b[n] = 0;
+            Breadcrumb(b);
+        }
+
         public static int[] Get(int which, FVector3? position, float radius, int[] modelHashes)
         {
             var buf = new int[2048];
