@@ -131,6 +131,7 @@ API uint64_t *nativeCall(void) {
   else if (IS("GET_CLOCK_DAY_OF_MONTH")) g_ret[0] = 17;
   else if (IS("GET_CLOCK_HOURS")) g_ret[0] = 13;
   else if (IS("GET_CLOCK_DAY_OF_WEEK")) g_ret[0] = 6;
+  else if (IS("UPDATE_ONSCREEN_KEYBOARD")) g_ret[0] = (uint64_t)(int64_t)-1;  // no on-screen keyboard showing
   else if (IS("GET_FRAME_TIME")) g_ret[0] = f2u(0.025f);
   else if (IS("GET_FRAME_COUNT")) g_ret[0] = atomic_load(&g_frame);
   else if (IS("GET_PLAYER_WANTED_LEVEL")) g_ret[0] = (uint64_t)g_wanted;
