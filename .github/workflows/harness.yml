@@ -1,0 +1,27 @@
+name: Mod test lab
+on:
+  push:
+    branches: [main]
+    paths: ['harness/**', 'shvdn/**', '.github/workflows/harness.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  test:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with: { dotnet-version: '8.0.x' }
+      - name: Run the mods against the fake game
+        run: harness/run.sh 2>&1 | tee harness-log.txt
+      - name: Save results to the "builds" branch
+        if: always()
+        run: |
+          mkdir -p /tmp/res && cp harness-log.txt /tmp/res/ || true
+          cp -R hout/. /tmp/res/ 2>/dev/null || true
+          git config user.name "build bot"; git config user.email "actions@users.noreply.github.com"
+          git fetch origin builds && git checkout -B builds origin/builds
+          rm -rf harness && mkdir -p harness && cp -R /tmp/res/. harness/
+          git add harness && git commit -m "Mod test lab run ${{ github.run_number }}" || true
+          git push origin builds
