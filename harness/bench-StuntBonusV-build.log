@@ -1,5 +1,5 @@
   Determining projects to restore...
-  Restored /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj (in 59 ms).
+  Restored /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj (in 97 ms).
 /Users/runner/.dotnet/sdk/10.0.400/Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3277: Found conflicts between different versions of "System.Collections.Immutable" that could not be resolved. [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
 /Users/runner/.dotnet/sdk/10.0.400/Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3277: There was a conflict between "System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" and "System.Collections.Immutable, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a". [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
 /Users/runner/.dotnet/sdk/10.0.400/Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3277:     "System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" was chosen because it was primary and "System.Collections.Immutable, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" was not. [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
@@ -29,4 +29,4 @@ Build succeeded.
     1 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.92
+Time Elapsed 00:00:01.16
