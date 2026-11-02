@@ -51,6 +51,18 @@ API void scriptWait(uint32_t ms) {
     for (int i = 0; i < g_nKeys; i++) { g_keys[i](0x76, 1, 0, 0, 0, 0, 0); g_keys[i](0x76, 1, 0, 0, 0, 1, 1); }
   }
   if (f % 400 == 0) fx_log("[game] frame %u", f);
+  { // the on-screen menu pad: when would it show, and does pressing it work
+    extern int net_menu_active(void); extern void net_vpad(int, int);
+    static int last = -1; int m = net_menu_active();
+    if (m != last) { fx_log("[game] mod menu %s (touch pad %s)", m ? "open" : "closed", m ? "shown" : "hidden"); last = m; }
+    static const struct { double t; int b, down; } P[] = {{34, 1, 1}, {34.2, 1, 0}, {35, 1, 1}, {35.2, 1, 0}, {36, 4, 1}, {36.2, 4, 0},
+                                                         {38, 5, 1}, {38.2, 5, 0}, {40, 5, 1}, {40.2, 5, 0}};
+    static unsigned pi;
+    while (pi < sizeof P / sizeof P[0] && t >= P[pi].t) {
+      fx_log("[game] touch pad: %s %s", (const char *[]){"up", "down", "left", "right", "OK", "back"}[P[pi].b], P[pi].down ? "pressed" : "released");
+      net_vpad(P[pi].b, P[pi].down); pi++;
+    }
+  }
 }
 // the game's script thread: runs the registered script (the .NET server script never returns)
 API void fake_game_run(void) {

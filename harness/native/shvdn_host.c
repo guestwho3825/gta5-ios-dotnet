@@ -61,6 +61,46 @@ static pthread_mutex_t g_boxLock = PTHREAD_MUTEX_INITIALIZER;
 static _Atomic int g_serving;  // the game thread is inside its wait loop and will answer
 
 static __thread uint64_t t_hash, t_args[32], t_ret[4];
+
+// ---------- touch pad for mod menus (NativeUI, LemonUI...) ----------
+// Those menus move with the game's controls (phone/frontend up, down, accept, back...), which touch can't press.
+// The on-screen pad sets "virtual" controls here; when a .NET mod asks the game whether one of those controls is
+// pressed, the answer comes from the pad (the game itself is unaffected). A mod asking about up/down tells us a menu
+// is open, so the pad is shown only then.
+enum { VB_UP, VB_DOWN, VB_LEFT, VB_RIGHT, VB_OK, VB_BACK, VB_N };
+static int vb_of(int ctl) {
+  switch (ctl) {
+    case 172: case 188: case 27: return VB_UP;      // INPUT_CELLPHONE_UP, INPUT_FRONTEND_UP, INPUT_PHONE
+    case 173: case 187: return VB_DOWN;
+    case 174: case 189: return VB_LEFT;
+    case 175: case 190: return VB_RIGHT;
+    case 176: case 201: case 191: case 18: return VB_OK;   // CELLPHONE_SELECT, FRONTEND_ACCEPT, FRONTEND_RDOWN, ENTER
+    case 177: case 202: case 194: return VB_BACK;           // CELLPHONE_CANCEL, FRONTEND_CANCEL, FRONTEND_RRIGHT
+  }
+  return -1;
+}
+static _Atomic int g_vbHeld[VB_N], g_vbPend[VB_N], g_vbRelPend[VB_N];
+static volatile int g_vbJust[VB_N], g_vbRel[VB_N];   // for the current .NET tick
+static _Atomic double g_menuSeen;
+void net_vpad(int b, int down) {
+  if (b < 0 || b >= VB_N) return;
+  if (down) { atomic_store(&g_vbHeld[b], 1); atomic_store(&g_vbPend[b], 1); }
+  else { atomic_store(&g_vbHeld[b], 0); atomic_store(&g_vbRelPend[b], 1); }
+}
+static double vb_now(void) { struct timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return t.tv_sec * 1e3 + t.tv_nsec / 1e6; }
+int net_menu_active(void) { return vb_now() - atomic_load(&g_menuSeen) < 450; }
+static void vb_new_tick(void) {
+  for (int b = 0; b < VB_N; b++) { g_vbJust[b] = atomic_exchange(&g_vbPend[b], 0); g_vbRel[b] = atomic_exchange(&g_vbRelPend[b], 0); }
+}
+// 1 pressed, 2 just pressed, 3 just released
+static int ctl_kind(uint64_t h) {
+  switch (h) {
+    case 0xF3A21BCD95725A4AULL: case 0xE2587F8CBBD87B1DULL: return 1;
+    case 0x580417101DDB492FULL: case 0x91AEF906BCA88877ULL: return 2;
+    case 0x50F940259D3841E6ULL: case 0x305C8DCD79DA8B0FULL: return 3;
+  }
+  return 0;
+}
 static __thread int t_n;
 
 void shv_nativeInit(uint64_t hash) { t_hash = hash; t_n = 0; }
@@ -68,6 +108,15 @@ void shv_nativePush64(uint64_t v) { if (t_n < 32) t_args[t_n++] = v; }
 uint64_t *shv_nativeCall(void) {
   memset(t_ret, 0, sizeof t_ret);
   if (t_hash == WAIT_HASH) return t_ret;
+  int ck = ctl_kind(t_hash);
+  if (ck && t_n >= 2) {
+    int ctl = (int)t_args[1], b = vb_of(ctl);
+    if (b >= 0) {
+      if (ctl == 172 || ctl == 173 || ctl == 187 || ctl == 188) atomic_store(&g_menuSeen, vb_now());
+      int v = ck == 1 ? atomic_load(&g_vbHeld[b]) : ck == 2 ? g_vbJust[b] : g_vbRel[b];
+      if (v) { t_ret[0] = 1; return t_ret; }
+    }
+  }
   pthread_mutex_lock(&g_boxLock);
   g_box.kind = 1; g_box.hash = t_hash; g_box.n = t_n;
   memcpy(g_box.args, t_args, sizeof(uint64_t) * (size_t)t_n);
@@ -289,6 +338,7 @@ void net_shvdn_run(const net_api *a) {
     double s = now_ms();
     atomic_store(&g_netTickStart, s);
     if (ticks < 3) shv_breadcrumb("(ScriptHookV .NET tick starting)");
+    vb_new_tick();
     ck = a->enter_unsafe(&sd);
     while (atomic_load(&g_kHead) != atomic_load(&g_kTail)) {
       unsigned h = atomic_load(&g_kHead);
