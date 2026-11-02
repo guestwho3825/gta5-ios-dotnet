@@ -1,0 +1,63 @@
+[16:11:22] [DEBUG] Loading API from /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/out-shvdn-ios/dotnet/ScriptHookVDotNet2.dll ...
+[16:11:22] [DEBUG] Loading API from /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/out-shvdn-ios/dotnet/ScriptHookVDotNet3.dll ...
+[16:11:22] [DEBUG] Initializing NativeMemory members...
+[16:11:22] [ERROR] Failed to create console: System.PlatformNotSupportedException: the in-game console is not available on iOS (no keyboard); scripts are unaffected
+   at SHVDN.ScriptHookVDotNet.Init(IntPtr getTlsContextFunc, IntPtr setTlsContextFunc, IntPtr gameThreadTlsContext, UInt32 gameThreadId)
+[16:11:22] [DEBUG] Loading scripts from /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts ...
+[16:11:22] [DEBUG] Loading assembly NativeUI.dll ...
+[16:11:22] [ERROR] Failed to load assembly NativeUI.dll: System.TypeLoadException: Could not resolve type with token 01000017 from typeref (expected class 'GTA.Script' in assembly 'ScriptHookVDotNet, Version=2.9.2.0, Culture=neutral, PublicKeyToken=null')
+   at System.Reflection.RuntimeModule.GetTypes()
+   at System.Reflection.Assembly.GetTypes()
+   at SHVDN.ScriptDomain.<LoadScriptsFromAssembly>g__RegisterScriptTypesInAssembly|79_0(Assembly assembly, String filename, ScriptAssemblyInfo asmInfo, Version targetApiVersion, Version& resolvedApiVersion)
+   at SHVDN.ScriptDomain.LoadScriptsFromAssembly(Assembly assembly, String filename)
+[16:11:22] [DEBUG] Loading assembly Better Chases+.dll ...
+[16:11:22] [INFO] Found 6 script(s) in Better Chases+.dll resolved to API version 3.6.0 (script assembly version: 1.1.2.0, target API version: 3.0.2).
+[16:11:22] [DEBUG] Instantiating script BetterChasesPlus.ArrestWarrants ...
+[16:11:22] [INFO] Started script BetterChasesPlus.ArrestWarrants.
+[16:11:22] [DEBUG] Instantiating script BetterChasesPlus.BetterChases+BetterChasesActive ...
+[16:11:22] [INFO] Started script BetterChasesPlus.BetterChases+BetterChasesActive.
+[16:11:22] [DEBUG] Instantiating script BetterChasesPlus.BetterChases+BetterChasesPassive ...
+[16:11:22] [INFO] Started script BetterChasesPlus.BetterChases+BetterChasesPassive.
+[16:11:22] [DEBUG] Instantiating script BetterChasesPlus.Config ...
+[16:11:22] [ERROR] Failed to instantiate script BetterChasesPlus.Config because constructor threw an exception: System.TypeInitializationException: The type initializer for 'BetterChasesPlus.Config' threw an exception.
+ ---> System.TypeLoadException: Could not load type of field 'NativeUI.UIMenu:_mainMenu' (0) due to: Could not resolve type with token 01000031 from typeref (expected class 'GTA.UIContainer' in assembly 'ScriptHookVDotNet, Version=2.9.2.0, Culture=neutral, PublicKeyToken=null') assembly:ScriptHookVDotNet, Version=2.9.2.0, Culture=neutral, PublicKeyToken=null type:GTA.UIContainer member:(null)
+   at BetterChasesPlus.Config..cctor()
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Constructor(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[16:11:22] [DEBUG] Instantiating script BetterChasesPlus.Renderer ...
+[16:11:23] [INFO] Started script BetterChasesPlus.Renderer.
+[16:11:23] [DEBUG] Instantiating script BetterChasesPlus.Witnesses ...
+[16:11:23] [INFO] Started script BetterChasesPlus.Witnesses.
+[16:11:23] [ERROR] Caught unhandled exception:
+System.TypeInitializationException: The type initializer for 'BetterChasesPlus.Config' threw an exception.
+ ---> System.TypeLoadException: Could not load type of field 'NativeUI.UIMenu:_mainMenu' (0) due to: Could not resolve type with token 01000031 from typeref (expected class 'GTA.UIContainer' in assembly 'ScriptHookVDotNet, Version=2.9.2.0, Culture=neutral, PublicKeyToken=null') assembly:ScriptHookVDotNet, Version=2.9.2.0, Culture=neutral, PublicKeyToken=null type:GTA.UIContainer member:(null)
+   at BetterChasesPlus.Config..cctor()
+   --- End of inner exception stack trace ---
+   at BetterChasesPlus.ArrestWarrants.OnTick(Object sender, EventArgs e)
+   at SHVDN.Script.DoTick()
+[16:11:23] [ERROR] The exception was thrown while executing the script BetterChasesPlus.ArrestWarrants from "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts/Better Chases+.dll".
+[16:11:23] [ERROR] Caught unhandled exception:
+System.TypeInitializationException: The type initializer for 'BetterChasesPlus.Config' threw an exception.
+ ---> System.TypeLoadException: Could not load type of field 'NativeUI.UIMenu:_mainMenu' (0) due to: Could not resolve type with token 01000031 from typeref (expected class 'GTA.UIContainer' in assembly 'ScriptHookVDotNet, Version=2.9.2.0, Culture=neutral, PublicKeyToken=null') assembly:ScriptHookVDotNet, Version=2.9.2.0, Culture=neutral, PublicKeyToken=null type:GTA.UIContainer member:(null)
+   at BetterChasesPlus.Config..cctor()
+   --- End of inner exception stack trace ---
+   at BetterChasesPlus.BetterChases.BetterChasesActive.OnTick(Object sender, EventArgs e)
+   at SHVDN.Script.DoTick()
+[16:11:23] [ERROR] The exception was thrown while executing the script BetterChasesPlus.BetterChases+BetterChasesActive from "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts/Better Chases+.dll".
+[16:11:23] [ERROR] Caught unhandled exception:
+System.TypeInitializationException: The type initializer for 'BetterChasesPlus.Config' threw an exception.
+ ---> System.TypeLoadException: Could not load type of field 'NativeUI.UIMenu:_mainMenu' (0) due to: Could not resolve type with token 01000031 from typeref (expected class 'GTA.UIContainer' in assembly 'ScriptHookVDotNet, Version=2.9.2.0, Culture=neutral, PublicKeyToken=null') assembly:ScriptHookVDotNet, Version=2.9.2.0, Culture=neutral, PublicKeyToken=null type:GTA.UIContainer member:(null)
+   at BetterChasesPlus.Config..cctor()
+   --- End of inner exception stack trace ---
+   at BetterChasesPlus.BetterChases.BetterChasesPassive.OnTick(Object sender, EventArgs e)
+   at SHVDN.Script.DoTick()
+[16:11:23] [ERROR] The exception was thrown while executing the script BetterChasesPlus.BetterChases+BetterChasesPassive from "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts/Better Chases+.dll".
+[16:11:23] [ERROR] Caught unhandled exception:
+System.TypeInitializationException: The type initializer for 'BetterChasesPlus.Config' threw an exception.
+ ---> System.TypeLoadException: Could not load type of field 'NativeUI.UIMenu:_mainMenu' (0) due to: Could not resolve type with token 01000031 from typeref (expected class 'GTA.UIContainer' in assembly 'ScriptHookVDotNet, Version=2.9.2.0, Culture=neutral, PublicKeyToken=null') assembly:ScriptHookVDotNet, Version=2.9.2.0, Culture=neutral, PublicKeyToken=null type:GTA.UIContainer member:(null)
+   at BetterChasesPlus.Config..cctor()
+   --- End of inner exception stack trace ---
+   at BetterChasesPlus.Renderer.OnTick(Object sender, EventArgs e)
+   at SHVDN.Script.DoTick()
+[16:11:23] [ERROR] The exception was thrown while executing the script BetterChasesPlus.Renderer from "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts/Better Chases+.dll".

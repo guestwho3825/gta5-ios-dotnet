@@ -2,7 +2,7 @@ SHVDN patched for iOS
 10.0.400
     0 Error(s)
 
-Time Elapsed 00:00:01.99
+Time Elapsed 00:00:02.71
     14 Warning(s)
     0 Error(s)
     0 Error(s)
@@ -11,36 +11,36 @@ Time Elapsed 00:00:01.99
     0 Error(s)
 /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/out-shvdn-ios/build:
 total 6360
-drwxr-xr-x  17 runner  staff      544 Nov  2 16:07 .
-drwxr-xr-x  12 runner  staff      384 Nov  2 16:07 ..
--rw-r--r--   1 runner  staff     1252 Nov  2 16:07 PostHook.DotNet.deps.json
--rw-r--r--   1 runner  staff     9216 Nov  2 16:07 PostHook.DotNet.dll
--rw-r--r--   1 runner  staff    11444 Nov  2 16:07 PostHook.DotNet.pdb
--rw-r--r--   1 runner  staff     9375 Nov  2 16:07 ScriptHookVDotNet.deps.json
--rw-r--r--   1 runner  staff   198656 Nov  2 16:07 ScriptHookVDotNet.dll
--rw-r--r--   1 runner  staff    85840 Nov  2 16:07 ScriptHookVDotNet.pdb
--rw-r--r--   1 runner  staff     1263 Nov  2 16:07 ScriptHookVDotNet2.deps.json
--rw-r--r--   1 runner  staff   955392 Nov  2 16:07 ScriptHookVDotNet2.dll
--rw-r--r--   1 runner  staff   170012 Nov  2 16:07 ScriptHookVDotNet2.pdb
--rw-r--r--   1 runner  staff     1265 Nov  2 16:07 ScriptHookVDotNet3.deps.json
--rw-r--r--   1 runner  staff  1435136 Nov  2 16:07 ScriptHookVDotNet3.dll
--rw-r--r--   1 runner  staff   319732 Nov  2 16:07 ScriptHookVDotNet3.pdb
--rw-r--r--   1 runner  staff      430 Nov  2 16:06 System.Windows.Forms.deps.json
--rw-r--r--   1 runner  staff    11264 Nov  2 16:06 System.Windows.Forms.dll
--rw-r--r--   1 runner  staff    11428 Nov  2 16:06 System.Windows.Forms.pdb
+drwxr-xr-x  17 runner  staff      544 Nov  2 16:11 .
+drwxr-xr-x  12 runner  staff      384 Nov  2 16:11 ..
+-rw-r--r--   1 runner  staff     1252 Nov  2 16:11 PostHook.DotNet.deps.json
+-rw-r--r--   1 runner  staff     9216 Nov  2 16:11 PostHook.DotNet.dll
+-rw-r--r--   1 runner  staff    11444 Nov  2 16:11 PostHook.DotNet.pdb
+-rw-r--r--   1 runner  staff     9375 Nov  2 16:11 ScriptHookVDotNet.deps.json
+-rw-r--r--   1 runner  staff   198656 Nov  2 16:11 ScriptHookVDotNet.dll
+-rw-r--r--   1 runner  staff    85840 Nov  2 16:11 ScriptHookVDotNet.pdb
+-rw-r--r--   1 runner  staff     1263 Nov  2 16:11 ScriptHookVDotNet2.deps.json
+-rw-r--r--   1 runner  staff   955392 Nov  2 16:11 ScriptHookVDotNet2.dll
+-rw-r--r--   1 runner  staff   170012 Nov  2 16:11 ScriptHookVDotNet2.pdb
+-rw-r--r--   1 runner  staff     1265 Nov  2 16:10 ScriptHookVDotNet3.deps.json
+-rw-r--r--   1 runner  staff  1435136 Nov  2 16:10 ScriptHookVDotNet3.dll
+-rw-r--r--   1 runner  staff   319732 Nov  2 16:10 ScriptHookVDotNet3.pdb
+-rw-r--r--   1 runner  staff      430 Nov  2 16:10 System.Windows.Forms.deps.json
+-rw-r--r--   1 runner  staff    11264 Nov  2 16:10 System.Windows.Forms.dll
+-rw-r--r--   1 runner  staff    11428 Nov  2 16:10 System.Windows.Forms.pdb
 
 /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/out-shvdn-ios/dotnet:
 total 5120
-drwxr-xr-x   7 runner  staff      224 Nov  2 16:07 .
-drwxr-xr-x  12 runner  staff      384 Nov  2 16:07 ..
--rw-r--r--   1 runner  staff     9216 Nov  2 16:07 PostHook.DotNet.dll
--rw-r--r--   1 runner  staff   198656 Nov  2 16:07 ScriptHookVDotNet.dll
--rw-r--r--   1 runner  staff   955392 Nov  2 16:07 ScriptHookVDotNet2.dll
--rw-r--r--   1 runner  staff  1435136 Nov  2 16:07 ScriptHookVDotNet3.dll
--rw-r--r--   1 runner  staff    11264 Nov  2 16:07 System.Windows.Forms.dll
+drwxr-xr-x   7 runner  staff      224 Nov  2 16:11 .
+drwxr-xr-x  12 runner  staff      384 Nov  2 16:11 ..
+-rw-r--r--   1 runner  staff     9216 Nov  2 16:11 PostHook.DotNet.dll
+-rw-r--r--   1 runner  staff   198656 Nov  2 16:11 ScriptHookVDotNet.dll
+-rw-r--r--   1 runner  staff   955392 Nov  2 16:11 ScriptHookVDotNet2.dll
+-rw-r--r--   1 runner  staff  1435136 Nov  2 16:11 ScriptHookVDotNet3.dll
+-rw-r--r--   1 runner  staff    11264 Nov  2 16:11 System.Windows.Forms.dll
 
 /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/out-shvdn-ios/dotnet-scripts:
 total 16
-drwxr-xr-x   3 runner  staff    96 Nov  2 16:07 .
-drwxr-xr-x  12 runner  staff   384 Nov  2 16:07 ..
--rw-r--r--   1 runner  staff  5120 Nov  2 16:07 HelloIOS.dll
+drwxr-xr-x   3 runner  staff    96 Nov  2 16:11 .
+drwxr-xr-x  12 runner  staff   384 Nov  2 16:11 ..
+-rw-r--r--   1 runner  staff  5120 Nov  2 16:11 HelloIOS.dll

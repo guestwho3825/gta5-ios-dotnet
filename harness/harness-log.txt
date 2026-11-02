@@ -5,16 +5,22 @@ ScriptHookVDotNet2.dll
 ScriptHookVDotNet3.dll
 System.Windows.Forms.dll
 == 2. the same .NET runtime version as the iPhone, for macOS
-cp: /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rtpkg/runtimes/osx-arm64/native/include is a directory (not copied).
-System.Private.CoreLib.dll
+libSystem.Globalization.Native.dylib
+libSystem.IO.Compression.Native.dylib
 libSystem.Native.dylib
+libSystem.Net.Security.Native.dylib
+libSystem.Security.Cryptography.Native.Apple.dylib
+libSystem.Security.Cryptography.Native.OpenSsl.dylib
+libcoreclr.dylib
+libhostfxr.dylib
+libhostpolicy.dylib
 == 3. the mods, from their public source
 built Better Chases+ against ScriptHookVDotNet3 3.0.2
 total 424
-drwxr-xr-x  4 runner  staff     128 Nov  2 16:07 .
-drwxr-xr-x  3 runner  staff      96 Nov  2 16:07 ..
--rw-r--r--  1 runner  staff  124928 Nov  2 16:07 Better Chases+.dll
--rw-r--r--  1 runner  staff   89088 Nov  2 16:07 NativeUI.dll
+drwxr-xr-x  4 runner  staff     128 Nov  2 16:11 .
+drwxr-xr-x  3 runner  staff      96 Nov  2 16:11 ..
+-rw-r--r--  1 runner  staff  124928 Nov  2 16:11 Better Chases+.dll
+-rw-r--r--  1 runner  staff   89088 Nov  2 16:11 NativeUI.dll
 == 4. native parts (the iPhone's ScriptHook .NET server code + the fake game)
 == 5. run for 75 s (under the debugger, so a crash shows where)
 (lldb) target create "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host"
@@ -30,8 +36,28 @@ SIGPWR       true     false    false
 SIGPIPE      true     false    false  
 (lldb) run
 Target signal 'SIGPWR' not found in process
-[  0.000] [game] script thread running 1 script(s)
-[  0.000] [host] runtime not loaded: dlopen(/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rt/libmonosgen-2.0.dylib, 0x000A): tried: '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rt/libmonosgen-2.0.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rt/libmonosgen-2.0.dylib' (no such file), '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rt/libmonosgen-2.0.dylib' (no such file)
-Process 3756 exited with status = 2 (0x00000002)
-Process 3756 launched: '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host' (arm64)
-RESULT: CRASHED (see run.log)
+[  1.348] [game] script thread running 1 script(s)
+[  1.351] [host] starting .NET (172 libraries, interpreter only, like the iPhone)
+[  1.496] [host] .NET started
+[  1.498] [host] loading ScriptHookV .NET
+[  2.016] [net] ScriptHookV .NET started in 518 ms (its log: Documents/ScriptHookVDotNet.log)
+[ 20.050] [game] the player now has 2 stars
+[ 30.082] [game] pressing F7
+[ 32.182] [net] last 30s: 309 ticks, 0.99 ms per tick, 1 frames where scripts ran past the frame budget
+[ 41.081] [game] frame 400
+[ 62.218] [net] last 30s: 305 ticks, 1.24 ms per tick, 0 frames where scripts ran past the frame budget
+[ 75.098] [game] natives called by the mods (10 different):
+         3  PLAYER_ID (4f8644af03d0e0d6)
+         2  GET_PLAYER_PED (43a66c31c68491c0)
+         1  REQUEST_SCALEFORM_MOVIE (11fe353cf9733e6f)
+        14  REQUEST_STREAMED_TEXTURE_DICT (dfa2ef8e04127dd5)
+         4  BEGIN_TEXT_COMMAND_THEFEED_POST (202709f4c58a0424)
+        10  ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME (6c188be134e074aa)
+         4  END_TEXT_COMMAND_THEFEED_POST_TICKER (2ed7843f8f801023)
+         1  IS_HUD_HIDDEN (a86478c6958735c5)
+         1  IS_PLAYER_SWITCH_IN_PROGRESS (d9d2cfff49fab35f)
+         1  GET_PLAYER_WANTED_LEVEL (e28e54788ce8f12d)
+[ 75.098] [host] SURVIVED 75 s with the mods running
+Process 6511 exited with status = 0 (0x00000000)
+Process 6511 launched: '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host' (arm64)
+RESULT: the mods ran without crashing
