@@ -106,6 +106,11 @@ API uint64_t *nativeCall(void) {
   else if (IS("GET_ENTITY_MODEL")) g_ret[0] = (int)a0 == 1 ? 0x9B22DBAF : (int)a0 < 6 ? 0x5E3DA4A4 : (int)a0 < 10 ? 0x0D7114C9 : 0x79FBB0C5;
   else if (IS("GET_ENTITY_HEALTH") || IS("GET_ENTITY_MAX_HEALTH")) g_ret[0] = 200;
   else if (IS("GET_GAME_TIMER") || IS("GET_NETWORK_TIME")) g_ret[0] = (uint64_t)(t * 1000);
+  else if (IS("GET_CLOCK_YEAR")) g_ret[0] = 2013;
+  else if (IS("GET_CLOCK_MONTH")) g_ret[0] = 8;
+  else if (IS("GET_CLOCK_DAY_OF_MONTH")) g_ret[0] = 17;
+  else if (IS("GET_CLOCK_HOURS")) g_ret[0] = 13;
+  else if (IS("GET_CLOCK_DAY_OF_WEEK")) g_ret[0] = 6;
   else if (IS("GET_FRAME_TIME")) g_ret[0] = f2u(0.025f);
   else if (IS("GET_FRAME_COUNT")) g_ret[0] = atomic_load(&g_frame);
   else if (IS("GET_PLAYER_WANTED_LEVEL")) g_ret[0] = (uint64_t)g_wanted;

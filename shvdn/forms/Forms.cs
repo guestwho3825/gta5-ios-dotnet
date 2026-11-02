@@ -86,5 +86,29 @@ namespace System.Windows.Forms
     public class Control
     {
         public static Keys ModifierKeys => Keys.None;
+        public static System.Drawing.Point MousePosition => Cursor.Position;
+        public static bool IsKeyLocked(Keys keyVal) => false;
+    }
+
+    // the phone's screen, as mods ask for it (NativeUI centers the mouse cursor with it)
+    public class Screen
+    {
+        public static Screen PrimaryScreen { get; } = new Screen();
+        public static Screen[] AllScreens => new[] { PrimaryScreen };
+        public static Screen FromPoint(System.Drawing.Point p) => PrimaryScreen;
+        public System.Drawing.Rectangle Bounds => new System.Drawing.Rectangle(0, 0, 1920, 1080);
+        public System.Drawing.Rectangle WorkingArea => Bounds;
+        public bool Primary => true;
+        public string DeviceName => "iPhone";
+        public int BitsPerPixel => 32;
+    }
+
+    // there's no mouse pointer on the phone: the position is just remembered
+    public sealed class Cursor
+    {
+        public static System.Drawing.Point Position { get; set; }
+        public static System.Drawing.Rectangle Clip { get; set; }
+        public static void Show() { }
+        public static void Hide() { }
     }
 }
