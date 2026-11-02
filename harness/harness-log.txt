@@ -18,10 +18,10 @@ libhostpolicy.dylib
 built NativeUI against ScriptHookVDotNet2 2.10.12
 built Better Chases+ against ScriptHookVDotNet3 3.0.2
 total 448
-drwxr-xr-x  4 runner  staff     128 Nov  2 16:18 .
-drwxr-xr-x  3 runner  staff      96 Nov  2 16:18 ..
--rw-r--r--  1 runner  staff  124928 Nov  2 16:18 Better Chases+.dll
--rw-r--r--  1 runner  staff   99328 Nov  2 16:18 NativeUI.dll
+drwxr-xr-x  4 runner  staff     128 Nov  2 16:21 .
+drwxr-xr-x  3 runner  staff      96 Nov  2 16:21 ..
+-rw-r--r--  1 runner  staff  124928 Nov  2 16:21 Better Chases+.dll
+-rw-r--r--  1 runner  staff   99328 Nov  2 16:21 NativeUI.dll
 == 4. native parts (the iPhone's ScriptHook .NET server code + the fake game)
 == 5. run for 75 s (under the debugger, so a crash shows where)
 (lldb) target create "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host"
@@ -38,46 +38,43 @@ SIGPIPE      true     false    false
 (lldb) run
 Target signal 'SIGPWR' not found in process
 [  0.000] [game] script thread running 1 script(s)
-[  1.701] [host] starting .NET (172 libraries, interpreter only, like the iPhone)
-[  1.789] [host] .NET started
-[  1.791] [host] loading ScriptHookV .NET
-[  3.209] [net] ScriptHookV .NET start failed: System.TypeLoadException: Parent class failed to load, due to: Could not load type of field 'SHVDN.Compiler.CompilerPreset:<References>k__BackingField' (1) due to: Could not load file or assembly 'Microsoft.CodeAnalysis, Version=5.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. assembly:/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/out-shvdn-ios/dotnet/ScriptHookVDotNet.dll type:CompilerPreset member:(null)
-   at System.RuntimeType.GetMethodsByName(String name, BindingFlags bindingAttr, MemberListType listType, RuntimeType reflectedType)
-   at System.R
-[  3.209] [net] ScriptHookV .NET started in 1418 ms (its log: Documents/ScriptHookVDotNet.log)
-[ 20.163] [game] the player now has 2 stars
-[ 30.095] [game] pressing F7
-[ 33.244] [net] last 30s: 225 ticks, 37.29 ms per tick, 53 frames where scripts ran past the frame budget
-[ 44.896] [game] frame 400
-[ 63.351] [net] last 30s: 209 ticks, 51.38 ms per tick, 72 frames where scripts ran past the frame budget
-[ 75.146] [game] natives called by the mods (26 different):
-      3582  PLAYER_ID (4f8644af03d0e0d6)
-      1647  GET_PLAYER_PED (43a66c31c68491c0)
+[  1.541] [host] starting .NET (172 libraries, interpreter only, like the iPhone)
+[  1.653] [host] .NET started
+[  1.655] [host] loading ScriptHookV .NET
+[  2.235] [net] ScriptHookV .NET started in 580 ms (its log: Documents/ScriptHookVDotNet.log)
+[ 20.060] [game] the player now has 2 stars
+[ 30.078] [game] pressing F7
+[ 32.261] [net] last 30s: 263 ticks, 27.52 ms per tick, 46 frames where scripts ran past the frame budget
+[ 41.315] [game] frame 400
+[ 62.478] [net] last 30s: 193 ticks, 56.56 ms per tick, 71 frames where scripts ran past the frame budget
+[ 75.004] [game] natives called by the mods (26 different):
+      3689  PLAYER_ID (4f8644af03d0e0d6)
+      1684  GET_PLAYER_PED (43a66c31c68491c0)
          2  GET_FILENAME_FOR_AUDIO_CONVERSATION (7b5280eba9840c72)
         29  REQUEST_SCALEFORM_MOVIE (11fe353cf9733e6f)
         14  REQUEST_STREAMED_TEXTURE_DICT (dfa2ef8e04127dd5)
-      1756  GET_PLAYER_WANTED_LEVEL (e28e54788ce8f12d)
-       190  IS_MODEL_VALID (c0296a2edf545e92)
-       178  ARE_PLAYER_STARS_GREYED_OUT (0a6eb355ee14a2db)
-      1608  IS_PED_HUMAN (b980061da992779d)
-      1608  GET_PED_TYPE (ff059e1e4c01e63c)
-       527  IS_HUD_HIDDEN (a86478c6958735c5)
-       527  IS_PLAYER_SWITCH_IN_PROGRESS (d9d2cfff49fab35f)
+      1804  GET_PLAYER_WANTED_LEVEL (e28e54788ce8f12d)
+       195  IS_MODEL_VALID (c0296a2edf545e92)
+       200  ARE_PLAYER_STARS_GREYED_OUT (0a6eb355ee14a2db)
+      1595  IS_PED_HUMAN (b980061da992779d)
+      1595  GET_PED_TYPE (ff059e1e4c01e63c)
+       546  IS_HUD_HIDDEN (a86478c6958735c5)
+       546  IS_PLAYER_SWITCH_IN_PROGRESS (d9d2cfff49fab35f)
          1  SET_PLAYER_WANTED_LEVEL (39ff19c64ef7da5b)
          1  SET_PLAYER_WANTED_LEVEL_NOW (e0a7d1e497ffcd6f)
-       396  SET_MAX_WANTED_LEVEL (aa5f02db48d704b9)
-       396  IS_PED_SHOOTING (34616828cd07f1a1)
-      4048  GET_ENTITY_COORDS (3fef770d40960d5a)
-      1232  IS_ENTITY_DEAD (5f9532f3b5cc2551)
-       704  IS_PED_FACING_PED (d71649db0a545aa3)
-       395  GET_MAX_WANTED_LEVEL (462e0db9b137dc5f)
+       394  SET_MAX_WANTED_LEVEL (aa5f02db48d704b9)
+       394  IS_PED_SHOOTING (34616828cd07f1a1)
+       393  GET_MAX_WANTED_LEVEL (462e0db9b137dc5f)
          1  GET_CLOCK_YEAR (961777e64bdaf717)
          1  GET_CLOCK_MONTH (bbc72712e80257a1)
          1  GET_CLOCK_DAY_OF_MONTH (3d10bc92a4db1d35)
          2  BEGIN_TEXT_COMMAND_THEFEED_POST (202709f4c58a0424)
          4  ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME (6c188be134e074aa)
          2  END_TEXT_COMMAND_THEFEED_POST_TICKER (2ed7843f8f801023)
-[ 75.147] [host] SURVIVED 75 s with the mods running
-Process 7545 exited with status = 0 (0x00000000)
-Process 7545 launched: '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host' (arm64)
+      3979  GET_ENTITY_COORDS (3fef770d40960d5a)
+      1211  IS_ENTITY_DEAD (5f9532f3b5cc2551)
+       692  IS_PED_FACING_PED (d71649db0a545aa3)
+[ 75.004] [host] SURVIVED 75 s with the mods running
+Process 4090 exited with status = 0 (0x00000000)
+Process 4090 launched: '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host' (arm64)
 RESULT: the mods ran without crashing
