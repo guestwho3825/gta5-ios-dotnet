@@ -1,0 +1,17 @@
+  Determining projects to restore...
+  Restored /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj (in 172 ms).
+/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/VigilanteMissions/RandomMissions/FleecaRooberies.cs(75,44): error CS0117: 'Hash' does not contain a definition for '_DOOR_CONTROL' [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
+/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/VigilanteMissions/RandomMissions/FleecaRooberies.cs(76,44): error CS0117: 'Hash' does not contain a definition for '_DOOR_CONTROL' [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
+/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/VigilanteMissions/MostWantedMissions/MissionPed.cs(17,10): warning CS0414: The field 'MissionPed.stolenVehicleMission' is assigned but its value is never used [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
+/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/VigilanteMissions/RandomMissions/FleecaRooberies.cs(22,10): warning CS0414: The field 'FleecaRooberies.doorsUnlocked' is assigned but its value is never used [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
+
+Build FAILED.
+
+/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/VigilanteMissions/MostWantedMissions/MissionPed.cs(17,10): warning CS0414: The field 'MissionPed.stolenVehicleMission' is assigned but its value is never used [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
+/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/VigilanteMissions/RandomMissions/FleecaRooberies.cs(22,10): warning CS0414: The field 'FleecaRooberies.doorsUnlocked' is assigned but its value is never used [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
+/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/VigilanteMissions/RandomMissions/FleecaRooberies.cs(75,44): error CS0117: 'Hash' does not contain a definition for '_DOOR_CONTROL' [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
+/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/VigilanteMissions/RandomMissions/FleecaRooberies.cs(76,44): error CS0117: 'Hash' does not contain a definition for '_DOOR_CONTROL' [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
+    2 Warning(s)
+    2 Error(s)
+
+Time Elapsed 00:00:00.83

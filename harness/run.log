@@ -11,153 +11,156 @@ SIGPWR       true     false    false
 SIGPIPE      true     false    false  
 (lldb) run
 Target signal 'SIGPWR' not found in process
-[  1.479] [game] script thread running 1 script(s)
-[  1.483] [host] starting .NET (173 libraries, interpreter only, like the iPhone)
-[  1.584] [game] mod menu closed (touch pad hidden)
-[  1.591] [host] .NET started
-[  1.592] [net] Windows-style paths for mods: on (20 file functions)
-[  1.593] [host] loading ScriptHookV .NET
-[  1.873] [net] Windows path from a mod: "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts\\BetterChasesWarrants.xml" -> "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts/BetterChasesWarrants.xml"
-[  2.093] [net] Windows path from a mod: "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts\\BetterChasesConfig.xml" -> "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts/BetterChasesConfig.xml"
-[  2.394] [net] ScriptHookV .NET started in 801 ms (its log: Documents/ScriptHookVDotNet.log)
-[ 20.034] [game] the player now has 2 stars
-[ 30.064] [game] pressing F7
-[ 30.232] [game] mod menu open (touch pad shown)
-[ 31.429] [game] frame 400
-[ 32.527] [net] last 30s: 374 ticks, 14.34 ms per tick, 32 frames where scripts ran past the frame budget
-[ 34.045] [game] touch pad: down pressed
-[ 34.231] [game] touch pad: down released
-[ 35.016] [game] touch pad: down pressed
-[ 35.233] [game] touch pad: down released
-[ 36.087] [game] touch pad: OK pressed
-[ 36.228] [game] touch pad: OK released
-[ 38.029] [game] touch pad: back pressed
-[ 38.202] [game] touch pad: back released
-[ 38.257] [net] Windows path from a mod: "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts\\BetterChasesConfig.xml" -> "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts/BetterChasesConfig.xml"
-[ 39.125] [game] mod menu closed (touch pad hidden)
-[ 40.047] [game] touch pad: back pressed
-[ 40.223] [game] touch pad: back released
-[ 50.029] [game] pressing F9 (LemonUI test menu)
-[ 50.097] [game] mod menu open (touch pad shown)
-[ 52.075] [game] touch pad: down pressed
-[ 52.287] [game] touch pad: down released
-[ 53.118] [game] touch pad: down pressed
-[ 53.231] [game] touch pad: down released
-[ 54.051] [game] touch pad: down pressed
-[ 54.252] [game] touch pad: down released
-[ 55.067] [game] touch pad: OK pressed
-[ 55.227] [game] touch pad: OK released
-[ 57.011] [game] touch pad: back pressed
-[ 57.223] [game] touch pad: back released
-[ 58.012] [game] touch pad: up pressed
-[ 58.221] [game] touch pad: up released
-[ 58.670] [game] touch pad: up pressed
-[ 58.846] [game] touch pad: up released
-[ 59.544] [game] touch pad: OK pressed
-[ 59.752] [game] touch pad: OK released
-[ 61.032] [game] touch pad: back pressed
-[ 61.224] [game] touch pad: back released
-[ 61.874] [game] mod menu closed (touch pad hidden)
-[ 62.605] [net] last 30s: 316 ticks, 27.78 ms per tick, 58 frames where scripts ran past the frame budget
-[ 63.453] [game] frame 800
-[ 75.004] [game] natives called by the mods (97 different):
-      7624  PLAYER_ID (4f8644af03d0e0d6)
-      4120  GET_PLAYER_PED (43a66c31c68491c0)
+[  0.000] [game] script thread running 1 script(s)
+[  1.221] [game] mod menu closed (touch pad hidden)
+[  1.227] [host] starting .NET (173 libraries, interpreter only, like the iPhone)
+[  1.331] [host] .NET started
+[  1.331] [net] Windows-style paths for mods: on (20 file functions)
+[  1.333] [host] loading ScriptHookV .NET
+[  1.558] [net] Windows path from a mod: "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts\\BetterChasesWarrants.xml" -> "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts/BetterChasesWarrants.xml"
+[  1.795] [net] Windows path from a mod: "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts\\BetterChasesConfig.xml" -> "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts/BetterChasesConfig.xml"
+[  2.140] [net] Windows path from a mod: "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts\Surrender.ini" -> "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts/Surrender.ini"
+[  2.144] [net] ScriptHookV .NET started in 811 ms (its log: Documents/ScriptHookVDotNet.log)
+[ 20.095] [game] the player now has 2 stars
+[ 30.052] [game] pressing F7
+[ 30.256] [game] mod menu open (touch pad shown)
+[ 32.238] [net] last 30s: 275 ticks, 3.31 ms per tick, 4 frames where scripts ran past the frame budget
+[ 34.055] [game] touch pad: down pressed
+[ 34.358] [game] touch pad: down released
+[ 35.120] [game] touch pad: down pressed
+[ 35.258] [game] touch pad: down released
+[ 36.065] [game] touch pad: OK pressed
+[ 36.266] [game] touch pad: OK released
+[ 38.123] [game] touch pad: back pressed
+[ 38.371] [game] touch pad: back released
+[ 38.414] [net] Windows path from a mod: "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts\\BetterChasesConfig.xml" -> "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs/scripts/BetterChasesConfig.xml"
+[ 39.370] [game] mod menu closed (touch pad hidden)
+[ 40.100] [game] touch pad: back pressed
+[ 40.262] [game] touch pad: back released
+[ 44.174] [game] frame 400
+[ 50.030] [game] pressing F9 (LemonUI test menu)
+[ 50.196] [game] mod menu open (touch pad shown)
+[ 52.057] [game] touch pad: down pressed
+[ 52.261] [game] touch pad: down released
+[ 53.048] [game] touch pad: down pressed
+[ 53.211] [game] touch pad: down released
+[ 54.098] [game] touch pad: down pressed
+[ 54.219] [game] touch pad: down released
+[ 55.118] [game] touch pad: OK pressed
+[ 55.232] [game] touch pad: OK released
+[ 57.129] [game] touch pad: back pressed
+[ 57.267] [game] touch pad: back released
+[ 58.043] [game] touch pad: up pressed
+[ 58.256] [game] touch pad: up released
+[ 58.632] [game] touch pad: up pressed
+[ 58.809] [game] touch pad: up released
+[ 59.507] [game] touch pad: OK pressed
+[ 59.703] [game] touch pad: OK released
+[ 61.160] [game] touch pad: back pressed
+[ 61.326] [game] touch pad: back released
+[ 62.018] [game] mod menu closed (touch pad hidden)
+[ 62.324] [net] last 30s: 279 ticks, 3.11 ms per tick, 3 frames where scripts ran past the frame budget
+[ 75.130] [game] natives called by the mods (100 different):
+      7546  PLAYER_ID (4f8644af03d0e0d6)
+      4447  GET_PLAYER_PED (43a66c31c68491c0)
          2  GET_FILENAME_FOR_AUDIO_CONVERSATION (7b5280eba9840c72)
         33  REQUEST_SCALEFORM_MOVIE (11fe353cf9733e6f)
         14  REQUEST_STREAMED_TEXTURE_DICT (dfa2ef8e04127dd5)
-      3099  GET_ACTUAL_SCREEN_RESOLUTION (873c9f3104101dd3)
-       850  GET_SAFE_ZONE_SIZE (baf107b6bb2c97f0)
-       920  GET_ASPECT_RATIO (f1307ef624a80d87)
-       877  HAS_STREAMED_TEXTURE_DICT_LOADED (0145f696aaaad2e4)
-       226  GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING (0499d7b09fc9b407)
+      2924  GET_ACTUAL_SCREEN_RESOLUTION (873c9f3104101dd3)
+       675  GET_SAFE_ZONE_SIZE (baf107b6bb2c97f0)
+       914  GET_ASPECT_RATIO (f1307ef624a80d87)
+       864  HAS_STREAMED_TEXTURE_DICT_LOADED (0145f696aaaad2e4)
+       218  GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING (0499d7b09fc9b407)
         99  SET_SCRIPT_GFX_ALIGN (b8a850f20a067eb6)
         99  SET_SCRIPT_GFX_ALIGN_PARAMS (f5a2c681787e579d)
         19  GET_SCRIPT_GFX_ALIGN_POSITION (6dd8f5aa635eb4b2)
         99  RESET_SCRIPT_GFX_ALIGN (e3a3db414a373dab)
         47  BEGIN_TEXT_COMMAND_GET_SCREEN_WIDTH_OF_DISPLAY_TEXT (54ce8ac98e120cab)
-      1902  ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME (6c188be134e074aa)
-      1426  SET_TEXT_FONT (66e0276cc5f6b9da)
-      1426  SET_TEXT_SCALE (07c837f9a01c34c9)
-      1423  SET_TEXT_COLOUR (be6b23ffa53fb442)
-       863  SET_TEXT_JUSTIFICATION (4e096588b13ffeca)
+      1864  ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME (6c188be134e074aa)
+      1405  SET_TEXT_FONT (66e0276cc5f6b9da)
+      1405  SET_TEXT_SCALE (07c837f9a01c34c9)
+      1402  SET_TEXT_COLOUR (be6b23ffa53fb442)
+       842  SET_TEXT_JUSTIFICATION (4e096588b13ffeca)
         47  END_TEXT_COMMAND_GET_SCREEN_WIDTH_OF_DISPLAY_TEXT (85f061da64ed2f67)
         17  BEGIN_TEXT_COMMAND_GET_NUMBER_OF_LINES_FOR_STRING (521fb041d93dd0e4)
-       115  SET_TEXT_WRAP (63145d9c883a1a70)
+       118  SET_TEXT_WRAP (63145d9c883a1a70)
         17  END_TEXT_COMMAND_GET_NUMBER_OF_LINES_FOR_STRING (9040dfb09be75706)
         14  GET_RENDERED_CHARACTER_HEIGHT (db88a37483346780)
-      3059  GET_PLAYER_WANTED_LEVEL (e28e54788ce8f12d)
-       233  IS_MODEL_VALID (c0296a2edf545e92)
-       273  ARE_PLAYER_STARS_GREYED_OUT (0a6eb355ee14a2db)
-      3315  IS_PED_HUMAN (b980061da992779d)
-      3315  GET_PED_TYPE (ff059e1e4c01e63c)
-       846  IS_HUD_HIDDEN (a86478c6958735c5)
-       846  IS_PLAYER_SWITCH_IN_PROGRESS (d9d2cfff49fab35f)
+      3377  GET_PLAYER_WANTED_LEVEL (e28e54788ce8f12d)
+       230  IS_MODEL_VALID (c0296a2edf545e92)
+       219  ARE_PLAYER_STARS_GREYED_OUT (0a6eb355ee14a2db)
+      3297  IS_PED_HUMAN (b980061da992779d)
+      3297  GET_PED_TYPE (ff059e1e4c01e63c)
+       671  IS_HUD_HIDDEN (a86478c6958735c5)
+       671  IS_PLAYER_SWITCH_IN_PROGRESS (d9d2cfff49fab35f)
+       671  IS_PLAYER_BEING_ARRESTED (388a47c51abdac8e)
+       671  IS_PLAYER_DEAD (424d4687fa1e5652)
+       671  GET_ENTITY_MODEL (9f47b058362c84b5)
          1  SET_PLAYER_WANTED_LEVEL (39ff19c64ef7da5b)
          1  SET_PLAYER_WANTED_LEVEL_NOW (e0a7d1e497ffcd6f)
-       630  SET_MAX_WANTED_LEVEL (aa5f02db48d704b9)
-       630  IS_PED_SHOOTING (34616828cd07f1a1)
-       629  GET_MAX_WANTED_LEVEL (462e0db9b137dc5f)
-       173  GET_CLOCK_YEAR (961777e64bdaf717)
-       173  GET_CLOCK_MONTH (bbc72712e80257a1)
-       173  GET_CLOCK_DAY_OF_MONTH (3d10bc92a4db1d35)
-       173  GET_CLOCK_HOURS (25223ca6b4d20b7f)
-       173  GET_CLOCK_MINUTES (13d2b8add79640f2)
-       173  GET_CLOCK_SECONDS (494e97c2ef27c470)
-       684  SET_PED_COMBAT_ATTRIBUTES (9f7794730795e019)
-      1710  GET_CURRENT_PED_WEAPON (3a87e44bb9a01d54)
-       684  IS_PED_IN_COMBAT (4859f1fc66a6278e)
-       855  ENABLE_DISPATCH_SERVICE (dc0f817884cdd856)
-       342  IS_PED_IN_ANY_VEHICLE (997abd671d25ca0b)
-       171  IS_PED_BEING_STUNNED (4fbacce3b4138ee8)
-       171  IS_PED_RAGDOLL (47e4e977581c5b55)
-       171  IS_PED_PRONE (d6a86331a537a7b9)
-       171  IS_PED_SWIMMING (9de327631295b4c2)
-       171  IS_PED_SWIMMING_UNDER_WATER (c024869a53992f34)
-       171  IS_PED_FALLING (fb92a102f1c4dfa3)
-       171  IS_PED_JUMPING (cedabc5900a0bf97)
-       171  IS_PED_WALKING (de4c184b2b9b071a)
-       171  GET_ENTITY_SPEED (d5037ba82e12416f)
-       171  IS_PED_IN_COVER (60dfd0691a170b88)
-       171  IS_PLAYER_FREE_AIMING (2e397fd2ecd37c87)
-      2194  IS_DISABLED_CONTROL_PRESSED (e2587f8cbbd87b1d)
-       171  IS_PED_JACKING (4ae4ff911dfb61da)
-       171  IS_PED_TRYING_TO_ENTER_A_LOCKED_VEHICLE (44d28d5ddfe5f68c)
-       513  IS_PED_ARMED (475768a975d5ad17)
-      1368  HAS_ENTITY_BEEN_DAMAGED_BY_ENTITY (c86d67d52a707cf8)
-      2859  IS_ENTITY_DEAD (5f9532f3b5cc2551)
-      4899  GET_ENTITY_COORDS (3fef770d40960d5a)
-       852  IS_PED_FACING_PED (d71649db0a545aa3)
-       666  BEGIN_SCALEFORM_MOVIE_METHOD (f6e48914c7a8694e)
-       666  END_SCALEFORM_MOVIE_METHOD (c6796a8ffa375e53)
-       444  SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT (c3d0841a0cc546a6)
-       444  BEGIN_TEXT_COMMAND_SCALEFORM_STRING (80338406f3475e55)
-       444  END_TEXT_COMMAND_SCALEFORM_STRING (362e2d3fe93a9959)
+       510  SET_MAX_WANTED_LEVEL (aa5f02db48d704b9)
+       510  IS_PED_SHOOTING (34616828cd07f1a1)
+       509  GET_MAX_WANTED_LEVEL (462e0db9b137dc5f)
+       175  GET_CLOCK_YEAR (961777e64bdaf717)
+       175  GET_CLOCK_MONTH (bbc72712e80257a1)
+       175  GET_CLOCK_DAY_OF_MONTH (3d10bc92a4db1d35)
+       175  GET_CLOCK_HOURS (25223ca6b4d20b7f)
+       175  GET_CLOCK_MINUTES (13d2b8add79640f2)
+       175  GET_CLOCK_SECONDS (494e97c2ef27c470)
+       692  SET_PED_COMBAT_ATTRIBUTES (9f7794730795e019)
+      1730  GET_CURRENT_PED_WEAPON (3a87e44bb9a01d54)
+       692  IS_PED_IN_COMBAT (4859f1fc66a6278e)
+       865  ENABLE_DISPATCH_SERVICE (dc0f817884cdd856)
+       346  IS_PED_IN_ANY_VEHICLE (997abd671d25ca0b)
+       173  IS_PED_BEING_STUNNED (4fbacce3b4138ee8)
+       173  IS_PED_RAGDOLL (47e4e977581c5b55)
+       173  IS_PED_PRONE (d6a86331a537a7b9)
+       173  IS_PED_SWIMMING (9de327631295b4c2)
+       173  IS_PED_SWIMMING_UNDER_WATER (c024869a53992f34)
+       173  IS_PED_FALLING (fb92a102f1c4dfa3)
+       173  IS_PED_JUMPING (cedabc5900a0bf97)
+       173  IS_PED_WALKING (de4c184b2b9b071a)
+       173  GET_ENTITY_SPEED (d5037ba82e12416f)
+       173  IS_PED_IN_COVER (60dfd0691a170b88)
+       173  IS_PLAYER_FREE_AIMING (2e397fd2ecd37c87)
+      2158  IS_DISABLED_CONTROL_PRESSED (e2587f8cbbd87b1d)
+       173  IS_PED_JACKING (4ae4ff911dfb61da)
+       173  IS_PED_TRYING_TO_ENTER_A_LOCKED_VEHICLE (44d28d5ddfe5f68c)
+       519  IS_PED_ARMED (475768a975d5ad17)
+      1384  HAS_ENTITY_BEEN_DAMAGED_BY_ENTITY (c86d67d52a707cf8)
+      2833  IS_ENTITY_DEAD (5f9532f3b5cc2551)
+      4761  GET_ENTITY_COORDS (3fef770d40960d5a)
+       828  IS_PED_FACING_PED (d71649db0a545aa3)
+       642  BEGIN_SCALEFORM_MOVIE_METHOD (f6e48914c7a8694e)
+       642  END_SCALEFORM_MOVIE_METHOD (c6796a8ffa375e53)
+       428  SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT (c3d0841a0cc546a6)
+       428  BEGIN_TEXT_COMMAND_SCALEFORM_STRING (80338406f3475e55)
+       428  END_TEXT_COMMAND_SCALEFORM_STRING (362e2d3fe93a9959)
          1  SET_MOUSE_CURSOR_STYLE (8db8cffd58b62552)
-       367  IS_USING_KEYBOARD_AND_MOUSE (a571d46727e2b718)
+       360  IS_USING_KEYBOARD_AND_MOUSE (a571d46727e2b718)
       2800  ENABLE_CONTROL_ACTION (351220255d64c155)
         80  DISABLE_ALL_CONTROL_ACTIONS (5f4b6931816e599b)
-       188  DRAW_SCALEFORM_MOVIE_FULLSCREEN (0df606929c105be1)
+       184  DRAW_SCALEFORM_MOVIE_FULLSCREEN (0df606929c105be1)
        240  HIDE_HUD_COMPONENT_THIS_FRAME (6806c51ad12b83b8)
-       864  DRAW_SPRITE (e7ffae5ebf23d890)
-       524  DRAW_RECT (3a618a217e5154f0)
+       851  DRAW_SPRITE (e7ffae5ebf23d890)
+       516  DRAW_RECT (3a618a217e5154f0)
         80  SET_TEXT_CENTRE (c02f4dbfb51d988b)
-      1362  BEGIN_TEXT_COMMAND_DISPLAY_TEXT (25fbb336df1804cb)
-      1362  END_TEXT_COMMAND_DISPLAY_TEXT (cd015e5bb0d96a57)
+      1341  BEGIN_TEXT_COMMAND_DISPLAY_TEXT (25fbb336df1804cb)
+      1341  END_TEXT_COMMAND_DISPLAY_TEXT (cd015e5bb0d96a57)
       1890  IS_DISABLED_CONTROL_JUST_RELEASED (305c8dcd79da8b0f)
-      1381  IS_DISABLED_CONTROL_JUST_PRESSED (91aef906bca88877)
+      1348  IS_DISABLED_CONTROL_JUST_PRESSED (91aef906bca88877)
         17  GET_SOUND_ID (430386fe9bf80b45)
         17  PLAY_SOUND_FRONTEND (67c540aa08e4a6f5)
         17  RELEASE_SOUND_ID (353fc880830b88fa)
          3  SET_CURSOR_POSITION (fc695459d4d0e219)
          2  BEGIN_TEXT_COMMAND_THEFEED_POST (202709f4c58a0424)
          2  END_TEXT_COMMAND_THEFEED_POST_TICKER (2ed7843f8f801023)
-       108  SET_MOUSE_CURSOR_THIS_FRAME (aae7ce1d63167423)
-       528  GET_CONTROL_NORMAL (ec3c9b8d5327b563)
-     33480  DISABLE_CONTROL_ACTION (fe99b66d079cf6bc)
-       106  UPDATE_ONSCREEN_KEYBOARD (0cf2b696bbf945ae)
-       104  GET_GAME_TIMER (9cd27b0045628463)
-        12  SET_INPUT_EXCLUSIVE (ede476e5ee29edb1)
-[ 75.005] [host] SURVIVED 75 s with the mods running
-Process 2834 exited with status = 0 (0x00000000)
-Process 2834 launched: '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host' (arm64)
+       104  SET_MOUSE_CURSOR_THIS_FRAME (aae7ce1d63167423)
+       516  GET_CONTROL_NORMAL (ec3c9b8d5327b563)
+     32240  DISABLE_CONTROL_ACTION (fe99b66d079cf6bc)
+       103  UPDATE_ONSCREEN_KEYBOARD (0cf2b696bbf945ae)
+       101  GET_GAME_TIMER (9cd27b0045628463)
+         6  SET_INPUT_EXCLUSIVE (ede476e5ee29edb1)
+[ 75.130] [host] SURVIVED 75 s with the mods running
+Process 8007 exited with status = 0 (0x00000000)
+Process 8007 launched: '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host' (arm64)
