@@ -47,7 +47,7 @@ else grep -E "error" "$OUT"/lemon*-build.log | head -10; fi
 ls -la "$DOCS/scripts"
 
 echo "== 4. native parts (the iPhone's ScriptHook .NET server code + the fake game)"
-clang -O1 -g -dynamiclib -o "$W/libfakegame.dylib" "$H/fakegame.c" "$H/native/shvdn_host.c" "$H/native/shvdn_exports.S" || exit 1
+clang -O1 -g -dynamiclib -o "$W/libfakegame.dylib" "$H/fakegame.c" "$H/native/shvdn_host.c" "$H/native/shvdn_exports.S" "$H/native/pathfix.c" || exit 1
 clang -O1 -g -o "$W/host" "$H/host.c" || exit 1
 
 echo "== 5. run for $SECS s (under the debugger, so a crash shows where)"
@@ -57,4 +57,5 @@ lldb --batch \
   -k "thread backtrace all" -k "quit 1" \
   -- "$W/host" "$W/rt" "$DOTNET" "$DOCS" "$W/libfakegame.dylib" "$SECS" 2>&1 | tee "$OUT/run.log"
 cp "$DOCS"/*.log "$OUT/" 2>/dev/null; cp -R "$DOCS/posthook" "$OUT/" 2>/dev/null
+echo "== files the mods wrote:"; (cd "$DOCS" && find . -type f | grep -v "\.dll$" | sort)
 grep -q "SURVIVED" "$OUT/run.log" && echo "RESULT: the mods ran without crashing" || echo "RESULT: CRASHED (see run.log)"

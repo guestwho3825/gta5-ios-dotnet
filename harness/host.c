@@ -79,6 +79,7 @@ static void *boot(void *arg) {
   void *domain = ((void *(*)(const char *, const char *))mono_jit_init_version)("harness", "mobile");
   if (!domain) { fx_log("[host] runtime didn't start"); exit(2); }
   fx_log("[host] .NET started");
+  ((void (*)(const char *))dlsym(RTLD_DEFAULT, "pathfix_install"))(g_rt);
 
   char api[2048]; snprintf(api, sizeof api, "%s", g_dotnet);
   setenv("PH_DOCS", g_docs, 1); setenv("PH_APP", g_docs, 1); setenv("PH_SHVDN_API", api, 1); setenv("PH_D3D11", g_fake, 1);
