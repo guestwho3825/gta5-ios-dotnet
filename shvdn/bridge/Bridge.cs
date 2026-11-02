@@ -34,7 +34,11 @@ namespace PostHook
             IntPtr stub = hook == IntPtr.Zero ? IntPtr.Zero : NativeLibrary.GetExport(hook, "shv_null_stub");
             if (stub == IntPtr.Zero) { SHVDN.Log.Message(SHVDN.Log.Level.Error, "iOS: no stub for missing game functions"); return; }
             int n = 0;
-            foreach (Type t in typeof(SHVDN.ScriptHookVDotNet).Assembly.GetTypes())
+            Type nm = typeof(SHVDN.ScriptHookVDotNet).Assembly.GetType("SHVDN.NativeMemory");
+            if (nm == null) { SHVDN.Log.Message(SHVDN.Log.Level.Error, "iOS: NativeMemory not found"); return; }
+            var types = new System.Collections.Generic.List<Type> { nm };
+            for (int i = 0; i < types.Count; i++) types.AddRange(types[i].GetNestedTypes(BindingFlags.Public | BindingFlags.NonPublic));
+            foreach (Type t in types)
                 foreach (MethodInfo m in t.GetMethods(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.DeclaredOnly))
                     if (m.Name.StartsWith("IosFill_", StringComparison.Ordinal)) { m.Invoke(null, new object[] { stub }); n++; }
             SHVDN.Log.Message(SHVDN.Log.Level.Info, "iOS: ", n.ToString(), " PC-only game functions point at a safe stub");
