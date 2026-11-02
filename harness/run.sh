@@ -37,6 +37,13 @@ done
 echo "built Better Chases+ against ScriptHookVDotNet3 $SHV3"
 DOCS=$W/docs; mkdir -p "$DOCS/scripts"
 cp "$W/modsout/Better Chases+.dll" "$DOCS/scripts/"; cp "$W/nuiout/NativeUI.dll" "$DOCS/scripts/"
+# LemonUI (the menu library of most newer mods) + a small test mod that uses it
+git clone -q https://github.com/LemonUIbyLemon/LemonUI "$W/lemon" && git -C "$W/lemon" checkout -q 72a7a9ab511f3b1d614c544d7d7075f3d4c2438b
+rm -f "$W/lemon/Directory.Build.props"  # style checker only
+if dotnet build "$W/lemon/LemonUI.SHVDN3/LemonUI.SHVDN3.csproj" -c Release -nologo -p:GeneratePackageOnBuild=false -o "$W/lemonout" > "$OUT/lemonui-build.log" 2>&1 \
+   && dotnet build "$H/mods/LemonTest.csproj" -c Release -nologo -p:LEMONDLL="$W/lemonout/LemonUI.SHVDN3.dll" -o "$W/lemontest" > "$OUT/lemontest-build.log" 2>&1; then
+  cp "$W/lemonout/LemonUI.SHVDN3.dll" "$W/lemontest/LemonTest.dll" "$DOCS/scripts/"; echo "built LemonUI + test mod"
+else grep -E "error" "$OUT"/lemon*-build.log | head -10; fi
 ls -la "$DOCS/scripts"
 
 echo "== 4. native parts (the iPhone's ScriptHook .NET server code + the fake game)"

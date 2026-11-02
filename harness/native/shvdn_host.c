@@ -88,7 +88,7 @@ void net_vpad(int b, int down) {
   else { atomic_store(&g_vbHeld[b], 0); atomic_store(&g_vbRelPend[b], 1); }
 }
 static double vb_now(void) { struct timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return t.tv_sec * 1e3 + t.tv_nsec / 1e6; }
-int net_menu_active(void) { return vb_now() - atomic_load(&g_menuSeen) < 450; }
+int net_menu_active(void) { return vb_now() - atomic_load(&g_menuSeen) < 800; }
 static void vb_new_tick(void) {
   for (int b = 0; b < VB_N; b++) { g_vbJust[b] = atomic_exchange(&g_vbPend[b], 0); g_vbRel[b] = atomic_exchange(&g_vbRelPend[b], 0); }
 }
