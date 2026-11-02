@@ -1,9 +1,9 @@
   Determining projects to restore...
-  Restored /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/NativeUI.csproj (in 1.19 sec).
+  Restored /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/NativeUI.csproj (in 1.6 sec).
   NativeUI -> /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/nuiout/NativeUI.dll
 
 Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:02.00
+Time Elapsed 00:00:02.69
