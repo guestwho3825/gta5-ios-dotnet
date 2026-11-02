@@ -1,5 +1,5 @@
   Determining projects to restore...
-  Restored /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI.SHVDN3/LemonUI.SHVDN3.csproj (in 817 ms).
+  Restored /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI.SHVDN3/LemonUI.SHVDN3.csproj (in 512 ms).
 /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI/Menus/NativeSliderItem.cs(17,44): warning CS0108: 'NativeSliderItem.background' hides inherited member 'NativeItem.background'. Use the new keyword if hiding was intended. [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI.SHVDN3/LemonUI.SHVDN3.csproj]
   LemonUI.SHVDN3 -> /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemonout/LemonUI.SHVDN3.dll
 
@@ -9,4 +9,4 @@ Build succeeded.
     1 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:01.60
+Time Elapsed 00:00:01.33
