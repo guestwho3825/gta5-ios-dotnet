@@ -69,12 +69,12 @@ static void *boot(void *arg) {
   add_dir(&tpa, &len, &cap, g_dotnet, &count);
   add_dir(&tpa, &len, &cap, g_rt, &count);
   const char *keys[] = {"TRUSTED_PLATFORM_ASSEMBLIES", "APP_PATHS", "NATIVE_DLL_SEARCH_DIRECTORIES",
-                        "System.Globalization.Invariant", "System.GC.Concurrent"};
-  const char *vals[] = {tpa, g_dotnet, g_rt, "true", "false"};
+                        "System.Globalization.Invariant", "System.GC.Concurrent", "System.Globalization.PredefinedCulturesOnly"};
+  const char *vals[] = {tpa, g_dotnet, g_rt, "true", "false", "false"};
   fx_log("[host] starting .NET (%d libraries, interpreter only, like the iPhone)", count);
   ((void (*)(int))mono_jit_set_aot_mode)(8);  // MONO_AOT_MODE_INTERP_ONLY
   ((void (*)(size_t))mono_threads_set_default_stacksize)(16u << 20);
-  int rc = ((int (*)(int, const char **, const char **))monovm_initialize)(5, keys, vals);
+  int rc = ((int (*)(int, const char **, const char **))monovm_initialize)(6, keys, vals);
   if (rc) { fx_log("[host] runtime setup failed %d", rc); exit(2); }
   void *domain = ((void *(*)(const char *, const char *))mono_jit_init_version)("harness", "mobile");
   if (!domain) { fx_log("[host] runtime didn't start"); exit(2); }
