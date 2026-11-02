@@ -90,6 +90,25 @@ namespace System.Windows.Forms
         public static bool IsKeyLocked(Keys keyVal) => false;
     }
 
+    // the app, as mods ask for it: StartupPath is where the game's folder would be on PC (scripts/ is inside it)
+    public static class Application
+    {
+        static string Docs => System.Environment.GetEnvironmentVariable("PH_DOCS") ?? System.IO.Directory.GetCurrentDirectory();
+        public static string StartupPath => Docs;
+        public static string ExecutablePath => System.IO.Path.Combine(Docs, "GTA5.exe");
+        public static string ProductName => "Grand Theft Auto V";
+        public static string ProductVersion => "1.0.2699.0";
+        public static string CompanyName => "Rockstar Games";
+        public static string UserAppDataPath => Docs;
+        public static string LocalUserAppDataPath => Docs;
+        public static string CommonAppDataPath => Docs;
+        public static System.Globalization.CultureInfo CurrentCulture { get; set; } = System.Globalization.CultureInfo.InvariantCulture;
+        public static void DoEvents() { }
+        public static void Exit() { }
+        public static void EnableVisualStyles() { }
+        public static void SetCompatibleTextRenderingDefault(bool defaultValue) { }
+    }
+
     // the phone's screen, as mods ask for it (NativeUI centers the mouse cursor with it)
     public class Screen
     {

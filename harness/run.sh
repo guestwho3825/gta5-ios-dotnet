@@ -54,6 +54,11 @@ bench() {  # repo commit name srcsubdir uses_lemon
   # natives these mods call by names older ScriptHookV .NET versions used (the built mods carry the numbers)
   grep -rl "Hash\._" "$d" --include=*.cs | while read -r f; do
     sed -i '' -e 's/Hash\._DOOR_CONTROL/(Hash)0x9B12F9A24FABEDB0/g' -e 's/Hash\._IS_VEHICLE_ROCKET_BOOST_ACTIVE/(Hash)0x3D34E80EED4AE3BE/g' "$f"; done
+  # LemonUI here is newer than the one these mods were built with (a renamed property; the built mods don't care)
+  grep -rl "UseMouse = false" "$d" --include=*.cs | while read -r f; do sed -i '' -e 's/\.UseMouse = false/.MouseBehavior = LemonUI.Menus.MenuMouseBehavior.Disabled/g' "$f"; done
+  # their settings files, as the release zips ship them
+  find "$d" -path "*Release*" -name "*.ini" -exec cp {} "$DOCS/scripts/" \; 2>/dev/null
+  cp "$H"/mods/*Config.ini "$DOCS/scripts/" 2>/dev/null
   if dotnet build "$H/mods/Generic.csproj" -c Release -nologo -p:SRC="$d/$sub" -p:NAME="$name" -p:LEMONDLL="$L" -p:SHVDNBUILD="$ROOT/out-shvdn-ios/build" -o "$W/bench-out/$name" > "$OUT/bench-$name-build.log" 2>&1; then
     cp "$W/bench-out/$name/$name.dll" "$DOCS/scripts/"; echo "BENCH $name: built"
   else echo "BENCH $name: build failed"; grep -E " error " "$OUT/bench-$name-build.log" | sed 's/.*error/error/' | sort -u | head -5; fi
