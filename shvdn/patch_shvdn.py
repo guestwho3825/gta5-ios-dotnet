@@ -41,13 +41,19 @@ open(C + 'FodyWeavers.xml', 'w').write('<Weavers xmlns:xsi="http://www.w3.org/20
 D = C + 'Scripting/ScriptDomain.cs'
 regex(D, r'var setup = new AppDomainSetup\(\);.*?appdomain\.InitializeLifetimeService\(\);[^\n]*\n',
       '// iOS port: .NET 8 has a single app domain; scripts load into it directly\n')
-regex(D, r'scriptdomain = \(ScriptDomain\)appdomain\.CreateInstanceFromAndUnwrap\([^;]*\);', 'scriptdomain = new ScriptDomain(basePath);')
+regex(D, r'scriptdomain = \(ScriptDomain\)appdomain\.CreateInstanceFromAndUnwrap\([^;]*\);',
+      's_iosScriptPath = scriptPath; scriptdomain = new ScriptDomain(basePath);')
+# On PC the new domain's base directory *is* the scripts folder; here we say so directly
+edit(D, 'public string ScriptPath => AppDomain.BaseDirectory;',
+     'internal static string s_iosScriptPath;\n        public string ScriptPath => s_iosScriptPath ?? AppDomain.BaseDirectory;')
 edit(D, 'AppDomain.Unload(appdomain);', '// (single domain: nothing to unload)')
 edit(D, 'AppDomain.Unload(domain.AppDomain);', '// (single domain: nothing to unload)')
 
 H = C + 'ScriptHookVDotNet.cs'
+# the in-game console evaluates typed C# with the Roslyn compiler: no keyboard on iOS, and Roslyn needs newer
+# libraries than this runtime has, so it stays off (scripts don't need it)
 regex(H, r'console = \(Console\)domain\.AppDomain\.CreateInstanceFromAndUnwrap\([^;]*\);',
-      'console = (Console)Activator.CreateInstance(typeof(Console), true);')
+      'throw new PlatformNotSupportedException("the in-game console is not available on iOS (no keyboard); scripts are unaffected");')
 edit(H, 'domain.AppDomain.DoCallBack(new CrossAppDomainDelegate(AssignConsoleFromDomain));', 'AssignConsoleFromDomain();')
 # API next to the app, scripts/ini/log in Documents (the app bundle is read-only)
 edit(H, 'domain = ScriptDomain.Load(".", Ini.ScriptPath);',

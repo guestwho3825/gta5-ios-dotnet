@@ -42,6 +42,11 @@ namespace PostHook
                     new AssemblyName(e.Name).Name == "System.Windows.Forms" ? typeof(System.Windows.Forms.Keys).Assembly : null;
                 System.Windows.Forms.MessageBox.Sink = text => SHVDN.Log.Message(SHVDN.Log.Level.Warning, "[MessageBox] ", text);
 
+                // ScriptHookV .NET's settings file (it reports an error if there's none)
+                string ini = Path.Combine(docs, "ScriptHookVDotNet.ini");
+                if (!File.Exists(ini))
+                    File.WriteAllText(ini, "; ScriptHookV .NET settings (iOS port). Scripts go in the scripts folder next to this file.\nScriptsLocation=scripts\n");
+
                 // the scripts folder, with the bundled test mod
                 string scripts = Path.Combine(docs, "scripts");
                 Directory.CreateDirectory(scripts);
