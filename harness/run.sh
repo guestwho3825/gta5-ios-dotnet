@@ -20,15 +20,23 @@ ls "$W/rt" | grep -v "^System\.\|^Microsoft\.\|^mscorlib\|^netstandard\|^Windows
 echo "== 3. the mods, from their public source"
 git clone -q https://github.com/jglassmaker/GTAV-BetterChasesPlus "$W/bc" && git -C "$W/bc" checkout -q c9b695efd2f9c300a4d2a22f7f69ac47f6e0f354
 BCSRC="$W/bc/Better Chases+"
+git clone -q https://github.com/Guad/NativeUI "$W/nui" && git -C "$W/nui" checkout -q 1c6bfd48a6bce610acbec687a67b08d3c533ac64
+NUI=""
+for v in 2.10.12 2.10.10 2.10.9 2.10.8; do
+  if dotnet build "$H/mods/NativeUI.csproj" -c Release -nologo -p:NUISRC="$W/nui/NativeUI" -p:SHVDN2VER=$v -o "$W/nuiout" > "$OUT/nui-build-$v.log" 2>&1; then NUI=$v; break; fi
+  grep -E "error" "$OUT/nui-build-$v.log" | head -5
+done
+[ -n "$NUI" ] || { echo "couldn't build NativeUI"; exit 1; }
+echo "built NativeUI against ScriptHookVDotNet2 $NUI"
 SHV3=""
 for v in 3.0.2 3.0.4 3.1.0 3.6.0; do
-  if dotnet build "$H/mods/BetterChases.csproj" -c Release -nologo -p:BCSRC="$BCSRC" -p:SHVDN3VER=$v -o "$W/modsout" > "$OUT/mod-build-$v.log" 2>&1; then SHV3=$v; break; fi
+  if dotnet build "$H/mods/BetterChases.csproj" -c Release -nologo -p:BCSRC="$BCSRC" -p:NUIDLL="$W/nuiout/NativeUI.dll" -p:SHVDN3VER=$v -o "$W/modsout" > "$OUT/mod-build-$v.log" 2>&1; then SHV3=$v; break; fi
   grep -E "error" "$OUT/mod-build-$v.log" | head -5
 done
 [ -n "$SHV3" ] || { echo "couldn't build the mod"; exit 1; }
 echo "built Better Chases+ against ScriptHookVDotNet3 $SHV3"
 DOCS=$W/docs; mkdir -p "$DOCS/scripts"
-cp "$W/modsout/Better Chases+.dll" "$DOCS/scripts/"; cp "$BCSRC/lib/NativeUI.dll" "$DOCS/scripts/"
+cp "$W/modsout/Better Chases+.dll" "$DOCS/scripts/"; cp "$W/nuiout/NativeUI.dll" "$DOCS/scripts/"
 ls -la "$DOCS/scripts"
 
 echo "== 4. native parts (the iPhone's ScriptHook .NET server code + the fake game)"
