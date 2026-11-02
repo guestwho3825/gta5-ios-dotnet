@@ -17,19 +17,14 @@ libhostpolicy.dylib
 == 3. the mods, from their public source
 built NativeUI against ScriptHookVDotNet2 2.10.12
 built Better Chases+ against ScriptHookVDotNet3 3.0.2
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI/Menus/NativeStatsPanel.cs(35,17): error CS9273: In language version 14.0, 'field' is a keyword within a property accessor. Rename the variable or use the identifier '@field' instead. [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI.SHVDN3/LemonUI.SHVDN3.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI/Menus/NativeStatsPanel.cs(37,27): error CS1061: 'Color' does not contain a definition for 'SetColor' and no accessible extension method 'SetColor' accepting a first argument of type 'Color' could be found (are you missing a using directive or an assembly reference?) [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI.SHVDN3/LemonUI.SHVDN3.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI/Menus/NativeStatsPanel.cs(51,17): error CS9273: In language version 14.0, 'field' is a keyword within a property accessor. Rename the variable or use the identifier '@field' instead. [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI.SHVDN3/LemonUI.SHVDN3.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI/Menus/NativeStatsPanel.cs(53,27): error CS1061: 'Color' does not contain a definition for 'SetColor' and no accessible extension method 'SetColor' accepting a first argument of type 'Color' could be found (are you missing a using directive or an assembly reference?) [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI.SHVDN3/LemonUI.SHVDN3.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI/Menus/NativeStatsPanel.cs(35,17): error CS9273: In language version 14.0, 'field' is a keyword within a property accessor. Rename the variable or use the identifier '@field' instead. [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI.SHVDN3/LemonUI.SHVDN3.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI/Menus/NativeStatsPanel.cs(37,27): error CS1061: 'Color' does not contain a definition for 'SetColor' and no accessible extension method 'SetColor' accepting a first argument of type 'Color' could be found (are you missing a using directive or an assembly reference?) [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI.SHVDN3/LemonUI.SHVDN3.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI/Menus/NativeStatsPanel.cs(51,17): error CS9273: In language version 14.0, 'field' is a keyword within a property accessor. Rename the variable or use the identifier '@field' instead. [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI.SHVDN3/LemonUI.SHVDN3.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI/Menus/NativeStatsPanel.cs(53,27): error CS1061: 'Color' does not contain a definition for 'SetColor' and no accessible extension method 'SetColor' accepting a first argument of type 'Color' could be found (are you missing a using directive or an assembly reference?) [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/lemon/LemonUI.SHVDN3/LemonUI.SHVDN3.csproj]
-total 448
-drwxr-xr-x  4 runner  staff     128 Nov  2 19:05 .
-drwxr-xr-x  3 runner  staff      96 Nov  2 19:05 ..
--rw-r--r--  1 runner  staff  124928 Nov  2 19:05 Better Chases+.dll
--rw-r--r--  1 runner  staff   99328 Nov  2 19:05 NativeUI.dll
+built LemonUI + test mod
+total 672
+drwxr-xr-x  6 runner  staff     192 Nov  2 19:08 .
+drwxr-xr-x  3 runner  staff      96 Nov  2 19:08 ..
+-rw-r--r--  1 runner  staff  124928 Nov  2 19:08 Better Chases+.dll
+-rw-r--r--  1 runner  staff    6144 Nov  2 19:08 LemonTest.dll
+-rw-r--r--  1 runner  staff  104448 Nov  2 19:08 LemonUI.SHVDN3.dll
+-rw-r--r--  1 runner  staff   99328 Nov  2 19:08 NativeUI.dll
 == 4. native parts (the iPhone's ScriptHook .NET server code + the fake game)
 == 5. run for 75 s (under the debugger, so a crash shows where)
 (lldb) target create "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host"
@@ -45,67 +40,67 @@ SIGPWR       true     false    false
 SIGPIPE      true     false    false  
 (lldb) run
 Target signal 'SIGPWR' not found in process
-[  1.238] [game] script thread running 1 script(s)
-[  1.241] [host] starting .NET (172 libraries, interpreter only, like the iPhone)
-[  1.271] [game] mod menu closed (touch pad hidden)
-[  1.326] [host] .NET started
-[  1.327] [host] loading ScriptHookV .NET
-[  1.805] [net] ScriptHookV .NET started in 478 ms (its log: Documents/ScriptHookVDotNet.log)
-[ 20.025] [game] the player now has 2 stars
-[ 30.001] [game] pressing F7
-[ 30.208] [game] mod menu open (touch pad shown)
-[ 30.540] [game] frame 400
-[ 31.809] [net] last 30s: 364 ticks, 18.89 ms per tick, 43 frames where scripts ran past the frame budget
-[ 34.039] [game] touch pad: down pressed
-[ 34.313] [game] touch pad: down released
-[ 35.023] [game] touch pad: down pressed
-[ 35.286] [game] touch pad: down released
-[ 36.014] [game] touch pad: OK pressed
-[ 36.204] [game] touch pad: OK released
-[ 38.048] [game] touch pad: back pressed
-[ 38.306] [game] touch pad: back released
-[ 39.421] [game] mod menu closed (touch pad hidden)
-[ 40.077] [game] touch pad: back pressed
-[ 40.298] [game] touch pad: back released
-[ 50.052] [game] pressing F9 (LemonUI test menu)
-[ 52.029] [game] touch pad: down pressed
-[ 52.231] [game] touch pad: down released
-[ 53.030] [game] touch pad: down pressed
-[ 53.225] [game] touch pad: down released
-[ 54.051] [game] touch pad: down pressed
-[ 54.228] [game] touch pad: down released
-[ 55.004] [game] touch pad: OK pressed
-[ 55.294] [game] touch pad: OK released
-[ 57.063] [game] touch pad: back pressed
-[ 57.281] [game] touch pad: back released
-[ 58.010] [game] touch pad: up pressed
-[ 58.277] [game] touch pad: up released
-[ 58.603] [game] touch pad: up pressed
-[ 58.803] [game] touch pad: up released
-[ 59.522] [game] touch pad: OK pressed
-[ 59.733] [game] touch pad: OK released
-[ 61.089] [game] touch pad: back pressed
-[ 61.295] [game] touch pad: back released
-[ 61.868] [net] last 30s: 328 ticks, 24.87 ms per tick, 57 frames where scripts ran past the frame budget
-[ 61.968] [game] frame 800
-[ 75.007] [game] natives called by the mods (82 different):
-      7675  PLAYER_ID (4f8644af03d0e0d6)
-      4130  GET_PLAYER_PED (43a66c31c68491c0)
+[  0.000] [game] script thread running 1 script(s)
+[  1.737] [game] mod menu closed (touch pad hidden)
+[  1.745] [host] starting .NET (172 libraries, interpreter only, like the iPhone)
+[  1.838] [host] .NET started
+[  1.840] [host] loading ScriptHookV .NET
+[  2.359] [net] ScriptHookV .NET started in 519 ms (its log: Documents/ScriptHookVDotNet.log)
+[ 20.086] [game] the player now has 2 stars
+[ 30.096] [game] pressing F7
+[ 30.297] [game] mod menu open (touch pad shown)
+[ 31.534] [game] frame 400
+[ 32.395] [net] last 30s: 356 ticks, 18.92 ms per tick, 46 frames where scripts ran past the frame budget
+[ 34.059] [game] touch pad: down pressed
+[ 34.300] [game] touch pad: down released
+[ 35.006] [game] touch pad: down pressed
+[ 35.256] [game] touch pad: down released
+[ 36.052] [game] touch pad: OK pressed
+[ 36.228] [game] touch pad: OK released
+[ 38.026] [game] touch pad: back pressed
+[ 38.289] [game] touch pad: back released
+[ 39.272] [game] mod menu closed (touch pad hidden)
+[ 40.064] [game] touch pad: back pressed
+[ 40.236] [game] touch pad: back released
+[ 50.058] [game] pressing F9 (LemonUI test menu)
+[ 52.009] [game] touch pad: down pressed
+[ 52.207] [game] touch pad: down released
+[ 53.035] [game] touch pad: down pressed
+[ 53.329] [game] touch pad: down released
+[ 54.076] [game] touch pad: down pressed
+[ 54.220] [game] touch pad: down released
+[ 55.057] [game] touch pad: OK pressed
+[ 55.205] [game] touch pad: OK released
+[ 57.066] [game] touch pad: back pressed
+[ 57.249] [game] touch pad: back released
+[ 58.069] [game] touch pad: up pressed
+[ 58.265] [game] touch pad: up released
+[ 58.689] [game] touch pad: up pressed
+[ 58.813] [game] touch pad: up released
+[ 59.563] [game] touch pad: OK pressed
+[ 59.741] [game] touch pad: OK released
+[ 60.895] [game] frame 800
+[ 61.023] [game] touch pad: back pressed
+[ 61.301] [game] touch pad: back released
+[ 62.484] [net] last 30s: 353 ticks, 21.59 ms per tick, 57 frames where scripts ran past the frame budget
+[ 75.112] [game] natives called by the mods (82 different):
+      7758  PLAYER_ID (4f8644af03d0e0d6)
+      4183  GET_PLAYER_PED (43a66c31c68491c0)
          2  GET_FILENAME_FOR_AUDIO_CONVERSATION (7b5280eba9840c72)
         29  REQUEST_SCALEFORM_MOVIE (11fe353cf9733e6f)
         14  REQUEST_STREAMED_TEXTURE_DICT (dfa2ef8e04127dd5)
-      3084  GET_PLAYER_WANTED_LEVEL (e28e54788ce8f12d)
-       231  IS_MODEL_VALID (c0296a2edf545e92)
-       289  ARE_PLAYER_STARS_GREYED_OUT (0a6eb355ee14a2db)
-      3284  IS_PED_HUMAN (b980061da992779d)
-      3284  GET_PED_TYPE (ff059e1e4c01e63c)
-       859  IS_HUD_HIDDEN (a86478c6958735c5)
-       859  IS_PLAYER_SWITCH_IN_PROGRESS (d9d2cfff49fab35f)
+      3124  GET_PLAYER_WANTED_LEVEL (e28e54788ce8f12d)
+       232  IS_MODEL_VALID (c0296a2edf545e92)
+       279  ARE_PLAYER_STARS_GREYED_OUT (0a6eb355ee14a2db)
+      3338  IS_PED_HUMAN (b980061da992779d)
+      3338  GET_PED_TYPE (ff059e1e4c01e63c)
+       876  IS_HUD_HIDDEN (a86478c6958735c5)
+       876  IS_PLAYER_SWITCH_IN_PROGRESS (d9d2cfff49fab35f)
          1  SET_PLAYER_WANTED_LEVEL (39ff19c64ef7da5b)
          1  SET_PLAYER_WANTED_LEVEL_NOW (e0a7d1e497ffcd6f)
-       631  SET_MAX_WANTED_LEVEL (aa5f02db48d704b9)
-       631  IS_PED_SHOOTING (34616828cd07f1a1)
-       630  GET_MAX_WANTED_LEVEL (462e0db9b137dc5f)
+       656  SET_MAX_WANTED_LEVEL (aa5f02db48d704b9)
+       656  IS_PED_SHOOTING (34616828cd07f1a1)
+       655  GET_MAX_WANTED_LEVEL (462e0db9b137dc5f)
        173  GET_CLOCK_YEAR (961777e64bdaf717)
        173  GET_CLOCK_MONTH (bbc72712e80257a1)
        173  GET_CLOCK_DAY_OF_MONTH (3d10bc92a4db1d35)
@@ -128,50 +123,50 @@ Target signal 'SIGPWR' not found in process
        171  GET_ENTITY_SPEED (d5037ba82e12416f)
        171  IS_PED_IN_COVER (60dfd0691a170b88)
        171  IS_PLAYER_FREE_AIMING (2e397fd2ecd37c87)
-      1377  IS_DISABLED_CONTROL_PRESSED (e2587f8cbbd87b1d)
+      1593  IS_DISABLED_CONTROL_PRESSED (e2587f8cbbd87b1d)
        171  IS_PED_JACKING (4ae4ff911dfb61da)
        171  IS_PED_TRYING_TO_ENTER_A_LOCKED_VEHICLE (44d28d5ddfe5f68c)
        513  IS_PED_ARMED (475768a975d5ad17)
       1368  HAS_ENTITY_BEEN_DAMAGED_BY_ENTITY (c86d67d52a707cf8)
-      2796  IS_ENTITY_DEAD (5f9532f3b5cc2551)
-      4692  GET_ENTITY_COORDS (3fef770d40960d5a)
-       816  IS_PED_FACING_PED (d71649db0a545aa3)
+      2866  IS_ENTITY_DEAD (5f9532f3b5cc2551)
+      4922  GET_ENTITY_COORDS (3fef770d40960d5a)
+       856  IS_PED_FACING_PED (d71649db0a545aa3)
         18  BEGIN_SCALEFORM_MOVIE_METHOD (f6e48914c7a8694e)
         18  END_SCALEFORM_MOVIE_METHOD (c6796a8ffa375e53)
         12  SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT (c3d0841a0cc546a6)
          6  GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING (0499d7b09fc9b407)
         12  BEGIN_TEXT_COMMAND_SCALEFORM_STRING (80338406f3475e55)
-       538  ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME (6c188be134e074aa)
+       646  ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME (6c188be134e074aa)
         12  END_TEXT_COMMAND_SCALEFORM_STRING (362e2d3fe93a9959)
          1  SET_MOUSE_CURSOR_STYLE (8db8cffd58b62552)
-       142  IS_USING_KEYBOARD_AND_MOUSE (a571d46727e2b718)
-      2485  ENABLE_CONTROL_ACTION (351220255d64c155)
-        71  DISABLE_ALL_CONTROL_ACTIONS (5f4b6931816e599b)
-        71  DRAW_SCALEFORM_MOVIE_FULLSCREEN (0df606929c105be1)
-       213  HIDE_HUD_COMPONENT_THIS_FRAME (6806c51ad12b83b8)
-        71  SET_SCRIPT_GFX_ALIGN (b8a850f20a067eb6)
-        71  SET_SCRIPT_GFX_ALIGN_PARAMS (f5a2c681787e579d)
+       170  IS_USING_KEYBOARD_AND_MOUSE (a571d46727e2b718)
+      2975  ENABLE_CONTROL_ACTION (351220255d64c155)
+        85  DISABLE_ALL_CONTROL_ACTIONS (5f4b6931816e599b)
+        85  DRAW_SCALEFORM_MOVIE_FULLSCREEN (0df606929c105be1)
+       255  HIDE_HUD_COMPONENT_THIS_FRAME (6806c51ad12b83b8)
+        85  SET_SCRIPT_GFX_ALIGN (b8a850f20a067eb6)
+        85  SET_SCRIPT_GFX_ALIGN_PARAMS (f5a2c681787e579d)
          3  GET_SAFE_ZONE_SIZE (baf107b6bb2c97f0)
-      2000  GET_ACTUAL_SCREEN_RESOLUTION (873c9f3104101dd3)
+      2392  GET_ACTUAL_SCREEN_RESOLUTION (873c9f3104101dd3)
          3  BEGIN_TEXT_COMMAND_GET_NUMBER_OF_LINES_FOR_STRING (521fb041d93dd0e4)
-       500  SET_TEXT_FONT (66e0276cc5f6b9da)
-       500  SET_TEXT_SCALE (07c837f9a01c34c9)
-        74  SET_TEXT_WRAP (63145d9c883a1a70)
+       598  SET_TEXT_FONT (66e0276cc5f6b9da)
+       598  SET_TEXT_SCALE (07c837f9a01c34c9)
+        88  SET_TEXT_WRAP (63145d9c883a1a70)
          3  END_TEXT_COMMAND_GET_NUMBER_OF_LINES_FOR_STRING (9040dfb09be75706)
-       355  HAS_STREAMED_TEXTURE_DICT_LOADED (0145f696aaaad2e4)
-       355  DRAW_SPRITE (e7ffae5ebf23d890)
-       213  DRAW_RECT (3a618a217e5154f0)
-       497  SET_TEXT_COLOUR (be6b23ffa53fb442)
-        71  SET_TEXT_CENTRE (c02f4dbfb51d988b)
-       497  BEGIN_TEXT_COMMAND_DISPLAY_TEXT (25fbb336df1804cb)
-       497  END_TEXT_COMMAND_DISPLAY_TEXT (cd015e5bb0d96a57)
-        71  RESET_SCRIPT_GFX_ALIGN (e3a3db414a373dab)
-      1674  IS_DISABLED_CONTROL_JUST_RELEASED (305c8dcd79da8b0f)
-       204  IS_DISABLED_CONTROL_JUST_PRESSED (91aef906bca88877)
+       425  HAS_STREAMED_TEXTURE_DICT_LOADED (0145f696aaaad2e4)
+       425  DRAW_SPRITE (e7ffae5ebf23d890)
+       255  DRAW_RECT (3a618a217e5154f0)
+       595  SET_TEXT_COLOUR (be6b23ffa53fb442)
+        85  SET_TEXT_CENTRE (c02f4dbfb51d988b)
+       595  BEGIN_TEXT_COMMAND_DISPLAY_TEXT (25fbb336df1804cb)
+       595  END_TEXT_COMMAND_DISPLAY_TEXT (cd015e5bb0d96a57)
+        85  RESET_SCRIPT_GFX_ALIGN (e3a3db414a373dab)
+      2010  IS_DISABLED_CONTROL_JUST_RELEASED (305c8dcd79da8b0f)
+       246  IS_DISABLED_CONTROL_JUST_PRESSED (91aef906bca88877)
          4  GET_SOUND_ID (430386fe9bf80b45)
          4  PLAY_SOUND_FRONTEND (67c540aa08e4a6f5)
          4  RELEASE_SOUND_ID (353fc880830b88fa)
-[ 75.007] [host] SURVIVED 75 s with the mods running
-Process 2891 exited with status = 0 (0x00000000)
-Process 2891 launched: '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host' (arm64)
+[ 75.112] [host] SURVIVED 75 s with the mods running
+Process 3281 exited with status = 0 (0x00000000)
+Process 3281 launched: '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host' (arm64)
 RESULT: the mods ran without crashing
