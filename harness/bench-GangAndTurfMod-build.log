@@ -1,5 +1,5 @@
   Determining projects to restore...
-  Restored /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj (in 66 ms).
+  Restored /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj (in 74 ms).
 /Users/runner/.dotnet/sdk/10.0.400/Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3277: Found conflicts between different versions of "System.Collections.Immutable" that could not be resolved. [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
 /Users/runner/.dotnet/sdk/10.0.400/Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3277: There was a conflict between "System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" and "System.Collections.Immutable, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a". [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
 /Users/runner/.dotnet/sdk/10.0.400/Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3277:     "System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" was chosen because it was primary and "System.Collections.Immutable, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" was not. [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
@@ -12,15 +12,9 @@
 /Users/runner/.dotnet/sdk/10.0.400/Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3277:           Project file item includes which caused reference "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/out-shvdn-ios/build/ScriptHookVDotNet.dll". [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
 /Users/runner/.dotnet/sdk/10.0.400/Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3277:             ScriptHookVDotNet3 [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
 /Users/runner/.dotnet/sdk/10.0.400/Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3277:             LemonUI.SHVDN3 [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/GangAndTurfMod/src/UI/MenuScript.cs(96,17): error CS0619: 'NativeMenu.UseMouse' is obsolete: 'This parameter is ambiguous, please use the MouseBehavior property instead instead.' [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/GangAndTurfMod/src/utils/Localization.cs(25,57): error CS0103: The name 'Application' does not exist in the current context [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/GangAndTurfMod/src/utils/persistence/PersistenceHandler.cs(25,31): error CS0103: The name 'Application' does not exist in the current context [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/GangAndTurfMod/src/utils/persistence/PersistenceHandler.cs(44,42): error CS0103: The name 'Application' does not exist in the current context [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/GangAndTurfMod/src/utils/persistence/PersistenceHandler.cs(65,39): error CS0103: The name 'Application' does not exist in the current context [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/GangAndTurfMod/src/utils/persistence/PersistenceHandler.cs(67,47): error CS0103: The name 'Application' does not exist in the current context [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/GangAndTurfMod/src/utils/persistence/PersistenceHandler.cs(71,35): error CS0103: The name 'Application' does not exist in the current context [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
+  Generic -> /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench-out/GangAndTurfMod/GangAndTurfMod.dll
 
-Build FAILED.
+Build succeeded.
 
 /Users/runner/.dotnet/sdk/10.0.400/Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3277: Found conflicts between different versions of "System.Collections.Immutable" that could not be resolved. [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
 /Users/runner/.dotnet/sdk/10.0.400/Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3277: There was a conflict between "System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" and "System.Collections.Immutable, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a". [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
@@ -34,14 +28,7 @@ Build FAILED.
 /Users/runner/.dotnet/sdk/10.0.400/Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3277:           Project file item includes which caused reference "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/out-shvdn-ios/build/ScriptHookVDotNet.dll". [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
 /Users/runner/.dotnet/sdk/10.0.400/Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3277:             ScriptHookVDotNet3 [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
 /Users/runner/.dotnet/sdk/10.0.400/Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3277:             LemonUI.SHVDN3 [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/GangAndTurfMod/src/UI/MenuScript.cs(96,17): error CS0619: 'NativeMenu.UseMouse' is obsolete: 'This parameter is ambiguous, please use the MouseBehavior property instead instead.' [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/GangAndTurfMod/src/utils/Localization.cs(25,57): error CS0103: The name 'Application' does not exist in the current context [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/GangAndTurfMod/src/utils/persistence/PersistenceHandler.cs(25,31): error CS0103: The name 'Application' does not exist in the current context [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/GangAndTurfMod/src/utils/persistence/PersistenceHandler.cs(44,42): error CS0103: The name 'Application' does not exist in the current context [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/GangAndTurfMod/src/utils/persistence/PersistenceHandler.cs(65,39): error CS0103: The name 'Application' does not exist in the current context [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/GangAndTurfMod/src/utils/persistence/PersistenceHandler.cs(67,47): error CS0103: The name 'Application' does not exist in the current context [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
-/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/bench/GangAndTurfMod/src/utils/persistence/PersistenceHandler.cs(71,35): error CS0103: The name 'Application' does not exist in the current context [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/harness/mods/Generic.csproj]
     1 Warning(s)
-    7 Error(s)
+    0 Error(s)
 
-Time Elapsed 00:00:01.71
+Time Elapsed 00:00:02.10
