@@ -24,4 +24,4 @@ jobs:
           git fetch origin builds && git checkout -B builds origin/builds
           rm -rf harness && mkdir -p harness && cp -R /tmp/res/. harness/
           git add harness && git commit -m "Mod test lab run ${{ github.run_number }}" || true
-          git push origin builds
+          for i in 1 2 3; do git push origin builds && break; sleep 5; git fetch origin builds; git rebase origin/builds || true; done

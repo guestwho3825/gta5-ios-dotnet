@@ -50,6 +50,7 @@ static void *boot(void *arg) {
   (void)arg;
   char lib[2048]; snprintf(lib, sizeof lib, "%s/libmonosgen-2.0.dylib", g_rt);
   void *h = dlopen(lib, RTLD_NOW | RTLD_GLOBAL);
+  if (!h) { snprintf(lib, sizeof lib, "%s/libcoreclr.dylib", g_rt); h = dlopen(lib, RTLD_NOW | RTLD_GLOBAL); }  // macOS Mono's name
   if (!h) { fx_log("[host] runtime not loaded: %s", dlerror()); exit(2); }
 #define S(n) void *n = dlsym(h, #n); if (!n) { fx_log("[host] missing %s", #n); exit(2); }
   S(monovm_initialize) S(mono_jit_set_aot_mode) S(mono_jit_init_version) S(mono_domain_assembly_open) S(mono_assembly_get_image)

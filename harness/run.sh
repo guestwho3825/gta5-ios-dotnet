@@ -14,8 +14,8 @@ echo "== 2. the same .NET runtime version as the iPhone, for macOS"
 VER=8.0.33; id=microsoft.netcore.app.runtime.mono.osx-arm64
 curl -fsSL -o "$W/rt.nupkg" "https://api.nuget.org/v3-flatcontainer/$id/$VER/$id.$VER.nupkg" || { echo "no runtime package"; exit 1; }
 mkdir -p "$W/rtpkg" "$W/rt"; (cd "$W/rtpkg" && unzip -q ../rt.nupkg)
-cp "$W"/rtpkg/runtimes/osx-arm64/lib/net8.0/*.dll "$W/rt/"; cp "$W"/rtpkg/runtimes/osx-arm64/native/* "$W/rt/"
-ls -la "$W"/rtpkg/runtimes/osx-arm64/native/ | head -40
+cp "$W"/rtpkg/runtimes/osx-arm64/lib/net8.0/*.dll "$W/rt/"; cp "$W"/rtpkg/runtimes/osx-arm64/native/*.dylib "$W"/rtpkg/runtimes/osx-arm64/native/*.dll "$W/rt/"
+ls "$W/rt" | grep -v "^System\.\|^Microsoft\.\|^mscorlib\|^netstandard\|^WindowsBase"
 
 echo "== 3. the mods, from their public source"
 git clone -q https://github.com/jglassmaker/GTAV-BetterChasesPlus "$W/bc" && git -C "$W/bc" checkout -q c9b695efd2f9c300a4d2a22f7f69ac47f6e0f354
