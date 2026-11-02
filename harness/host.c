@@ -37,7 +37,11 @@ static void add_dir(char **tpa, size_t *len, size_t *cap, const char *dir, int *
   for (struct dirent *e; (e = readdir(d));) {
     size_t nl = strlen(e->d_name);
     if (nl < 5 || strcmp(e->d_name + nl - 4, ".dll")) continue;
-    if (strstr(*tpa, e->d_name)) continue;  // first one wins (ours come first)
+    // first one wins (ours come first); match whole file names only ("System.dll" is inside "System.IO.FileSystem.dll")
+    { char key[512]; snprintf(key, sizeof key, "/%s:", e->d_name);
+      char *tmp = malloc(*len + 2); memcpy(tmp, *tpa, *len); tmp[*len] = ':'; tmp[*len + 1] = 0;
+      int dup = strstr(tmp, key) != NULL; free(tmp);
+      if (dup) continue; }
     size_t need = strlen(dir) + nl + 3;
     while (*len + need >= *cap) { *cap *= 2; *tpa = realloc(*tpa, *cap); }
     *len += snprintf(*tpa + *len, *cap - *len, "%s%s/%s", *count ? ":" : "", dir, e->d_name);
