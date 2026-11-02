@@ -83,4 +83,24 @@ open(M, 'w').write(s)
 edit(C + 'Game/NativeMemory.cs',
      'GameFileVersion = new Version(FileVersionInfo.GetVersionInfo(Process.GetCurrentProcess().MainModule.FileName).FileVersion);',
      'GameFileVersion = new Version(1, 0, 2699, 0);  // iOS port: the game build is 2699')
+# ---- entity lists: without PC memory addresses the pool pointers are null; use the native ScriptHook's lists ----
+import shutil, os
+shutil.copy(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'extra', 'IosEntities.cs'), C + 'Game/IosEntities.cs')
+NM = C + 'Game/NativeMemory.cs'
+for sig, call in [
+    (r'public static int\[\] GetPedHandles\(int\[\] modelHashes = null\)', 'IosEntities.Get(IosEntities.Peds, null, 0f, modelHashes)'),
+    (r'public static int\[\] GetPedHandles\(FVector3 position, float radius, int\[\] modelHashes = null\)', 'IosEntities.Get(IosEntities.Peds, position, radius, modelHashes)'),
+    (r'public static int\[\] GetPropHandles\(int\[\] modelHashes = null\)', 'IosEntities.Get(IosEntities.Objects, null, 0f, modelHashes)'),
+    (r'public static int\[\] GetPropHandles\(FVector3 position, float radius, int\[\] modelHashes = null\)', 'IosEntities.Get(IosEntities.Objects, position, radius, modelHashes)'),
+    (r'public static int\[\] GetVehicleHandles\(int\[\] modelHashes = null\)', 'IosEntities.Get(IosEntities.Vehicles, null, 0f, modelHashes)'),
+    (r'public static int\[\] GetVehicleHandles\(FVector3 position, float radius, int\[\] modelHashes = null\)', 'IosEntities.Get(IosEntities.Vehicles, position, radius, modelHashes)'),
+    (r'public static int\[\] GetPickupObjectHandles\(\)', 'IosEntities.Get(IosEntities.Pickups, null, 0f, null)'),
+    (r'public static int\[\] GetPickupObjectHandles\(FVector3 position, float radius\)', 'IosEntities.Get(IosEntities.Pickups, position, radius, null)')]:
+    regex(NM, '(' + sig + r'\s*\{)', r'\1\n            return ' + call.replace('\\', '\\\\') + ';  // iOS port\n')
+
+# ---- scripts that error: .NET 8 can't abort threads. Mark the script stopped and let its thread end by itself. ----
+SC = C + 'Scripting/Script.cs'
+edit(SC, '_thread.Abort();',
+     'if (System.Threading.Thread.CurrentThread != _thread) { try { _continueEvent.Release(); } catch { } }  // iOS: no Thread.Abort in .NET 8; the thread sees IsRunning == false and ends')
+regex(SC, r'DoTick\(\);(\s*// Yield execution to next tick)', r'DoTick();\n                    if (!IsRunning) break;  // iOS: stopped (no thread abort)\1')
 print("SHVDN patched for iOS")
