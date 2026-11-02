@@ -1,0 +1,17 @@
+(lldb) target create "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host"
+Current executable set to '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host' (arm64).
+(lldb) settings set -- target.run-args  "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rt" "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/out-shvdn-ios/dotnet" "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs" "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/libfakegame.dylib" "75"
+(lldb) process handle -p true -s false -n false SIGUSR1 SIGUSR2 SIGXCPU SIGPWR SIGPIPE
+NAME         PASS     STOP     NOTIFY
+===========  =======  =======  =======
+SIGUSR1      true     false    false  
+SIGUSR2      true     false    false  
+SIGXCPU      true     false    false  
+SIGPWR       true     false    false  
+SIGPIPE      true     false    false  
+(lldb) run
+Target signal 'SIGPWR' not found in process
+[  0.000] [game] script thread running 1 script(s)
+[  0.000] [host] runtime not loaded: dlopen(/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rt/libmonosgen-2.0.dylib, 0x000A): tried: '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rt/libmonosgen-2.0.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rt/libmonosgen-2.0.dylib' (no such file), '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rt/libmonosgen-2.0.dylib' (no such file)
+Process 3756 exited with status = 2 (0x00000002)
+Process 3756 launched: '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host' (arm64)

@@ -1,0 +1,37 @@
+== 1. ScriptHookV .NET for iOS
+PostHook.DotNet.dll
+ScriptHookVDotNet.dll
+ScriptHookVDotNet2.dll
+ScriptHookVDotNet3.dll
+System.Windows.Forms.dll
+== 2. the same .NET runtime version as the iPhone, for macOS
+cp: /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rtpkg/runtimes/osx-arm64/native/include is a directory (not copied).
+System.Private.CoreLib.dll
+libSystem.Native.dylib
+== 3. the mods, from their public source
+built Better Chases+ against ScriptHookVDotNet3 3.0.2
+total 424
+drwxr-xr-x  4 runner  staff     128 Nov  2 16:07 .
+drwxr-xr-x  3 runner  staff      96 Nov  2 16:07 ..
+-rw-r--r--  1 runner  staff  124928 Nov  2 16:07 Better Chases+.dll
+-rw-r--r--  1 runner  staff   89088 Nov  2 16:07 NativeUI.dll
+== 4. native parts (the iPhone's ScriptHook .NET server code + the fake game)
+== 5. run for 75 s (under the debugger, so a crash shows where)
+(lldb) target create "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host"
+Current executable set to '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host' (arm64).
+(lldb) settings set -- target.run-args  "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rt" "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/out-shvdn-ios/dotnet" "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/docs" "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/libfakegame.dylib" "75"
+(lldb) process handle -p true -s false -n false SIGUSR1 SIGUSR2 SIGXCPU SIGPWR SIGPIPE
+NAME         PASS     STOP     NOTIFY
+===========  =======  =======  =======
+SIGUSR1      true     false    false  
+SIGUSR2      true     false    false  
+SIGXCPU      true     false    false  
+SIGPWR       true     false    false  
+SIGPIPE      true     false    false  
+(lldb) run
+Target signal 'SIGPWR' not found in process
+[  0.000] [game] script thread running 1 script(s)
+[  0.000] [host] runtime not loaded: dlopen(/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rt/libmonosgen-2.0.dylib, 0x000A): tried: '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rt/libmonosgen-2.0.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rt/libmonosgen-2.0.dylib' (no such file), '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/rt/libmonosgen-2.0.dylib' (no such file)
+Process 3756 exited with status = 2 (0x00000002)
+Process 3756 launched: '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host' (arm64)
+RESULT: CRASHED (see run.log)
