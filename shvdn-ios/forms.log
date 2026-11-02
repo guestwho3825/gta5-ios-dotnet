@@ -1,9 +1,9 @@
   Determining projects to restore...
-  Restored /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/shvdn/forms/System.Windows.Forms.csproj (in 38 ms).
+  Restored /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/shvdn/forms/System.Windows.Forms.csproj (in 59 ms).
   System.Windows.Forms -> /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/out-shvdn-ios/build/System.Windows.Forms.dll
 
 Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:02.09
+Time Elapsed 00:00:02.05
