@@ -50,10 +50,18 @@ namespace PostHook
                 // the scripts folder, with the bundled test mod
                 string scripts = Path.Combine(docs, "scripts");
                 Directory.CreateDirectory(scripts);
+                // mods bundled with this build: .dll files are refreshed every launch, other files (configs) are only
+                // copied when missing so your own settings stay
                 string bundled = Path.Combine(app, "dotnet-scripts");
                 if (Directory.Exists(bundled))
-                    foreach (string f in Directory.GetFiles(bundled, "*.dll"))
-                        File.Copy(f, Path.Combine(scripts, Path.GetFileName(f)), true);
+                    foreach (string f in Directory.GetFiles(bundled))
+                    {
+                        string dst = Path.Combine(scripts, Path.GetFileName(f));
+                        if (f.EndsWith(".dll", StringComparison.OrdinalIgnoreCase) || !File.Exists(dst)) File.Copy(f, dst, true);
+                    }
+                // the HelloIOS test mod has done its job
+                string hello = Path.Combine(scripts, "HelloIOS.dll");
+                if (File.Exists(hello) && !File.Exists(Path.Combine(bundled, "HelloIOS.dll"))) File.Delete(hello);
 
                 SHVDN.ScriptHookVDotNet.Init(new IntPtr(getTls), new IntPtr(setTls), IntPtr.Zero, (uint)gameThreadId);
                 return null;

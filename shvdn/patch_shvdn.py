@@ -22,9 +22,10 @@ def regex(path, pat, new, flags=re.S, count=1):
 
 C = 'source/core/'
 V3 = 'source/scripting_v3/'
+V2 = 'source/scripting_v2/'
 
 # ---- project files: .NET 8, no Windows-only packaging, our Windows Forms stand-in ----
-for p in [C + 'ScriptHookVDotNet.csproj', V3 + 'ScriptHookVDotNet_APIv3.csproj']:
+for p in [C + 'ScriptHookVDotNet.csproj', V3 + 'ScriptHookVDotNet_APIv3.csproj', V2 + 'ScriptHookVDotNet_APIv2.csproj']:
     edit(p, '<TargetFramework>net48</TargetFramework>', '<TargetFramework>net8.0</TargetFramework>')
     s = open(p).read()
     s = s.replace('<UseWindowsForms>true</UseWindowsForms>', '').replace('<Platforms>x64</Platforms>', '')
@@ -33,6 +34,10 @@ for p in [C + 'ScriptHookVDotNet.csproj', V3 + 'ScriptHookVDotNet_APIv3.csproj']
     s = s.replace('</Project>', '  <ItemGroup><ProjectReference Include="../../../shvdn/forms/System.Windows.Forms.csproj" /></ItemGroup>\n</Project>')
     s = s.replace('<PropertyGroup>', '<PropertyGroup><NoWarn>$(NoWarn);CS1591;SYSLIB0003;SYSLIB0004;SYSLIB0010;SYSLIB0011;SYSLIB0012;SYSLIB0051;CS0618;CS0162</NoWarn><GenerateDocumentationFile>false</GenerateDocumentationFile><TreatWarningsAsErrors>false</TreatWarningsAsErrors>', 1)
     open(p, 'w').write(s)
+# v2's after-build step re-assembles the DLL with Windows' ildasm/ilasm, only to mark two constants for very old
+# C++/CLI-built mods; C# mods (NativeUI and nearly everything else) inline constants, so it's left out
+regex(V2 + 'ScriptHookVDotNet_APIv2.csproj', r'<UsingTask TaskName="ReplaceTextInFile".*?</UsingTask>', '')
+regex(V2 + 'ScriptHookVDotNet_APIv2.csproj', r'<Target Name="AfterCompile">.*?</Target>', '')
 # core's Fody (only used for Costura) goes too; the API keeps Fody for InlineIL
 regex(C + 'ScriptHookVDotNet.csproj', r'<PackageReference Include="Fody"[^>]*>.*?</PackageReference>', '')
 open(C + 'FodyWeavers.xml', 'w').write('<Weavers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />\n')
