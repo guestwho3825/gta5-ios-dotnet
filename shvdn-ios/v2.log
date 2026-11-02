@@ -1,6 +1,6 @@
   Determining projects to restore...
-  Restored /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/src-shvdn/source/scripting_v2/ScriptHookVDotNet_APIv2.csproj (in 82 ms).
-  Restored /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/src-shvdn/source/core/ScriptHookVDotNet.csproj (in 153 ms).
+  Restored /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/src-shvdn/source/scripting_v2/ScriptHookVDotNet_APIv2.csproj (in 80 ms).
+  Restored /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/src-shvdn/source/core/ScriptHookVDotNet.csproj (in 141 ms).
   1 of 3 projects are up-to-date for restore.
   System.Windows.Forms -> /Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/out-shvdn-ios/build/System.Windows.Forms.dll
 /Users/runner/.dotnet/sdk/10.0.400/Microsoft.CSharp.CurrentVersion.targets(130,9): warning MSB3884: Could not find rule set file "MinimumRecommendedRules.ruleset". [/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/src-shvdn/source/core/ScriptHookVDotNet.csproj]
@@ -65,4 +65,4 @@ Build succeeded.
     17 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:04.83
+Time Elapsed 00:00:05.71
