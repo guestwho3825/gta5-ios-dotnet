@@ -18,10 +18,10 @@ libhostpolicy.dylib
 built NativeUI against ScriptHookVDotNet2 2.10.12
 built Better Chases+ against ScriptHookVDotNet3 3.0.2
 total 448
-drwxr-xr-x  4 runner  staff     128 Nov  2 16:15 .
-drwxr-xr-x  3 runner  staff      96 Nov  2 16:15 ..
--rw-r--r--  1 runner  staff  124928 Nov  2 16:15 Better Chases+.dll
--rw-r--r--  1 runner  staff   99328 Nov  2 16:15 NativeUI.dll
+drwxr-xr-x  4 runner  staff     128 Nov  2 16:18 .
+drwxr-xr-x  3 runner  staff      96 Nov  2 16:18 ..
+-rw-r--r--  1 runner  staff  124928 Nov  2 16:18 Better Chases+.dll
+-rw-r--r--  1 runner  staff   99328 Nov  2 16:18 NativeUI.dll
 == 4. native parts (the iPhone's ScriptHook .NET server code + the fake game)
 == 5. run for 75 s (under the debugger, so a crash shows where)
 (lldb) target create "/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host"
@@ -38,208 +38,46 @@ SIGPIPE      true     false    false
 (lldb) run
 Target signal 'SIGPWR' not found in process
 [  0.000] [game] script thread running 1 script(s)
-[  1.652] [host] starting .NET (172 libraries, interpreter only, like the iPhone)
-[  1.748] [host] .NET started
-[  1.750] [host] loading ScriptHookV .NET
-[  2.242] [net] ScriptHookV .NET started in 492 ms (its log: Documents/ScriptHookVDotNet.log)
-Process 5142 stopped
-* thread #13, name = 'tid_3d03', stop reason = signal SIGSEGV
-    frame #0: 0x0000000000000000
-error: memory read failed for 0x0
-Target 0: (host) stopped.
-Process 5142 launched: '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host' (arm64)
-(lldb) thread backtrace all
-  thread #1, queue = 'com.apple.main-thread'
-    frame #0: 0x000000019fb4d448 libsystem_kernel.dylib`__semwait_signal + 8
-    frame #1: 0x000000019fa2e460 libsystem_c.dylib`nanosleep + 220
-    frame #2: 0x000000019fa372f4 libsystem_c.dylib`sleep + 52
-    frame #3: 0x00000001000030ec host`main(argc=<unavailable>, argv=<unavailable>) at host.c:115:3 [opt]
-    frame #4: 0x000000019f7ff154 dyld`start + 2476
-  thread #2
-    frame #0: 0x000000019fb49ea8 libsystem_kernel.dylib`swtch_pri + 8
-    frame #1: 0x000000019fb87d78 libsystem_pthread.dylib`cthread_yield + 32
-    frame #2: 0x00000001004a131c libfakegame.dylib`net_script at shvdn_host.c:219:46 [opt]
-    frame #3: 0x0000000100003138 host`game(arg=<unavailable>) at host.c:100:43 [opt]
-    frame #4: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-  thread #3, name = 'tid_1a03'
-    frame #0: 0x000000019fb4d64c libsystem_kernel.dylib`__psynch_cvwait + 8
-    frame #1: 0x000000019fb8b504 libsystem_pthread.dylib`_pthread_cond_wait + 1228
-    frame #2: 0x0000000100efdaa0 libcoreclr.dylib`mono_os_cond_timedwait + 136
-    frame #3: 0x0000000100f91180 libcoreclr.dylib`mono_w32handle_timedwait_signal_handle + 340
-    frame #4: 0x0000000100f90f60 libcoreclr.dylib`mono_w32handle_wait_one + 776
-    frame #5: 0x0000000100fb1980 libcoreclr.dylib`ves_icall_System_Threading_Monitor_Monitor_wait + 196
-    frame #6: 0x0000000100f491dc libcoreclr.dylib`ves_icall_System_Threading_Monitor_Monitor_wait_raw + 88
-    frame #7: 0x0000000100e7d7e8 libcoreclr.dylib`do_icall + 240
-    frame #8: 0x0000000100e7beac libcoreclr.dylib`do_icall_wrapper + 412
-    frame #9: 0x0000000100e77310 libcoreclr.dylib`mono_interp_exec_method + 12612
-    frame #10: 0x0000000100e72b70 libcoreclr.dylib`interp_runtime_invoke + 244
-    frame #11: 0x0000000100f76fec libcoreclr.dylib`mono_runtime_try_invoke + 156
-    frame #12: 0x0000000100f78f5c libcoreclr.dylib`mono_runtime_invoke + 500
-    frame #13: 0x00000001004a1a40 libfakegame.dylib`net_shvdn_run(a=0x00000001706916a0) at shvdn_host.c:301:11 [opt]
-    frame #14: 0x0000000100003698 host`boot(arg=<unavailable>) at host.c:96:3 [opt]
-    frame #15: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-  thread #4, name = 'SGen worker'
-    frame #0: 0x000000019fb4d64c libsystem_kernel.dylib`__psynch_cvwait + 8
-    frame #1: 0x000000019fb8b504 libsystem_pthread.dylib`_pthread_cond_wait + 1228
-    frame #2: 0x000000010100ed04 libcoreclr.dylib`thread_func + 412
-    frame #3: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-  thread #5, name = '.NET EventPipe'
-    frame #0: 0x000000019fb52760 libsystem_kernel.dylib`poll + 8
-    frame #1: 0x0000000101029234 libcoreclr.dylib`ds_ipc_poll + 212
-    frame #2: 0x000000010102892c libcoreclr.dylib`ds_ipc_stream_factory_get_next_available_stream + 600
-    frame #3: 0x0000000100edf194 libcoreclr.dylib`server_thread + 284
-    frame #4: 0x0000000100ee1750 libcoreclr.dylib`ep_rt_thread_mono_start_func + 48
-    frame #5: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-  thread #6, name = 'Finalizer'
-    frame #0: 0x000000019fb49dd0 libsystem_kernel.dylib`semaphore_wait_trap + 8
-    frame #1: 0x0000000100fb0420 libcoreclr.dylib`finalizer_thread + 340
-    frame #2: 0x0000000100f8c9dc libcoreclr.dylib`start_wrapper + 600
-    frame #3: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-  thread #7, name = '.NET TP Worker'
-    frame #0: 0x000000019fb4d64c libsystem_kernel.dylib`__psynch_cvwait + 8
-    frame #1: 0x000000019fb8b530 libsystem_pthread.dylib`_pthread_cond_wait + 1272
-    frame #2: 0x0000000100efda70 libcoreclr.dylib`mono_os_cond_timedwait + 88
-    frame #3: 0x0000000100f020e8 libcoreclr.dylib`mono_lifo_semaphore_timed_wait + 264
-    frame #4: 0x0000000100e7d80c libcoreclr.dylib`do_icall + 276
-    frame #5: 0x0000000100e7beac libcoreclr.dylib`do_icall_wrapper + 412
-    frame #6: 0x0000000100e77310 libcoreclr.dylib`mono_interp_exec_method + 12612
-    frame #7: 0x0000000100e72b70 libcoreclr.dylib`interp_runtime_invoke + 244
-    frame #8: 0x0000000100f7593c libcoreclr.dylib`mono_runtime_invoke_checked + 148
-    frame #9: 0x0000000100f8c984 libcoreclr.dylib`start_wrapper + 512
-    frame #10: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-  thread #8, name = '.NET TP Gate'
-    frame #0: 0x000000019fb4d64c libsystem_kernel.dylib`__psynch_cvwait + 8
-    frame #1: 0x000000019fb8b530 libsystem_pthread.dylib`_pthread_cond_wait + 1272
-    frame #2: 0x00000001002c355c libSystem.Native.dylib`SystemNative_LowLevelMonitor_TimedWait + 88
-    frame #3: 0x0000000100e7d80c libcoreclr.dylib`do_icall + 276
-    frame #4: 0x0000000100e7be74 libcoreclr.dylib`do_icall_wrapper + 356
-    frame #5: 0x0000000100e77310 libcoreclr.dylib`mono_interp_exec_method + 12612
-    frame #6: 0x0000000100e72b70 libcoreclr.dylib`interp_runtime_invoke + 244
-    frame #7: 0x0000000100f7593c libcoreclr.dylib`mono_runtime_invoke_checked + 148
-    frame #8: 0x0000000100f8c984 libcoreclr.dylib`start_wrapper + 512
-    frame #9: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-  thread #9, name = '.NET TP Worker'
-    frame #0: 0x000000019fb4d64c libsystem_kernel.dylib`__psynch_cvwait + 8
-    frame #1: 0x000000019fb8b530 libsystem_pthread.dylib`_pthread_cond_wait + 1272
-    frame #2: 0x0000000100efda70 libcoreclr.dylib`mono_os_cond_timedwait + 88
-    frame #3: 0x0000000100f020e8 libcoreclr.dylib`mono_lifo_semaphore_timed_wait + 264
-    frame #4: 0x0000000100e7d80c libcoreclr.dylib`do_icall + 276
-    frame #5: 0x0000000100e7beac libcoreclr.dylib`do_icall_wrapper + 412
-    frame #6: 0x0000000100e77310 libcoreclr.dylib`mono_interp_exec_method + 12612
-    frame #7: 0x0000000100e72b70 libcoreclr.dylib`interp_runtime_invoke + 244
-    frame #8: 0x0000000100f7593c libcoreclr.dylib`mono_runtime_invoke_checked + 148
-    frame #9: 0x0000000100f8c984 libcoreclr.dylib`start_wrapper + 512
-    frame #10: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-  thread #10, name = '.NET TP Worker'
-    frame #0: 0x000000019fb4d64c libsystem_kernel.dylib`__psynch_cvwait + 8
-    frame #1: 0x000000019fb8b530 libsystem_pthread.dylib`_pthread_cond_wait + 1272
-    frame #2: 0x0000000100efda70 libcoreclr.dylib`mono_os_cond_timedwait + 88
-    frame #3: 0x0000000100f020e8 libcoreclr.dylib`mono_lifo_semaphore_timed_wait + 264
-    frame #4: 0x0000000100e7d80c libcoreclr.dylib`do_icall + 276
-    frame #5: 0x0000000100e7beac libcoreclr.dylib`do_icall_wrapper + 412
-    frame #6: 0x0000000100e77310 libcoreclr.dylib`mono_interp_exec_method + 12612
-    frame #7: 0x0000000100e72b70 libcoreclr.dylib`interp_runtime_invoke + 244
-    frame #8: 0x0000000100f7593c libcoreclr.dylib`mono_runtime_invoke_checked + 148
-    frame #9: 0x0000000100f8c984 libcoreclr.dylib`start_wrapper + 512
-    frame #10: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-  thread #11, name = 'tid_2b03'
-    frame #0: 0x000000019fb4d64c libsystem_kernel.dylib`__psynch_cvwait + 8
-    frame #1: 0x000000019fb8b504 libsystem_pthread.dylib`_pthread_cond_wait + 1228
-    frame #2: 0x0000000100efdaa0 libcoreclr.dylib`mono_os_cond_timedwait + 136
-    frame #3: 0x0000000100f91180 libcoreclr.dylib`mono_w32handle_timedwait_signal_handle + 340
-    frame #4: 0x0000000100f90f60 libcoreclr.dylib`mono_w32handle_wait_one + 776
-    frame #5: 0x0000000100fb1980 libcoreclr.dylib`ves_icall_System_Threading_Monitor_Monitor_wait + 196
-    frame #6: 0x0000000100f491dc libcoreclr.dylib`ves_icall_System_Threading_Monitor_Monitor_wait_raw + 88
-    frame #7: 0x0000000100e7d7e8 libcoreclr.dylib`do_icall + 240
-    frame #8: 0x0000000100e7beac libcoreclr.dylib`do_icall_wrapper + 412
-    frame #9: 0x0000000100e77310 libcoreclr.dylib`mono_interp_exec_method + 12612
-    frame #10: 0x0000000100e72b70 libcoreclr.dylib`interp_runtime_invoke + 244
-    frame #11: 0x0000000100f7593c libcoreclr.dylib`mono_runtime_invoke_checked + 148
-    frame #12: 0x0000000100f8c984 libcoreclr.dylib`start_wrapper + 512
-    frame #13: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-  thread #12, name = 'tid_2d03'
-    frame #0: 0x000000019fb4d64c libsystem_kernel.dylib`__psynch_cvwait + 8
-    frame #1: 0x000000019fb8b504 libsystem_pthread.dylib`_pthread_cond_wait + 1228
-    frame #2: 0x0000000100efdaa0 libcoreclr.dylib`mono_os_cond_timedwait + 136
-    frame #3: 0x0000000100f91180 libcoreclr.dylib`mono_w32handle_timedwait_signal_handle + 340
-    frame #4: 0x0000000100f90f60 libcoreclr.dylib`mono_w32handle_wait_one + 776
-    frame #5: 0x0000000100fb1980 libcoreclr.dylib`ves_icall_System_Threading_Monitor_Monitor_wait + 196
-    frame #6: 0x0000000100f491dc libcoreclr.dylib`ves_icall_System_Threading_Monitor_Monitor_wait_raw + 88
-    frame #7: 0x0000000100e7d7e8 libcoreclr.dylib`do_icall + 240
-    frame #8: 0x0000000100e7beac libcoreclr.dylib`do_icall_wrapper + 412
-    frame #9: 0x0000000100e77310 libcoreclr.dylib`mono_interp_exec_method + 12612
-    frame #10: 0x0000000100e72b70 libcoreclr.dylib`interp_runtime_invoke + 244
-    frame #11: 0x0000000100f7593c libcoreclr.dylib`mono_runtime_invoke_checked + 148
-    frame #12: 0x0000000100f8c984 libcoreclr.dylib`start_wrapper + 512
-    frame #13: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-* thread #13, name = 'tid_3d03', stop reason = signal SIGSEGV
-  * frame #0: 0x0000000000000000
-    frame #1: 0x0000000100e7d7d0 libcoreclr.dylib`do_icall + 216
-    frame #2: 0x0000000100e7be74 libcoreclr.dylib`do_icall_wrapper + 356
-    frame #3: 0x0000000100e77310 libcoreclr.dylib`mono_interp_exec_method + 12612
-    frame #4: 0x0000000100e72b70 libcoreclr.dylib`interp_runtime_invoke + 244
-    frame #5: 0x0000000100f7593c libcoreclr.dylib`mono_runtime_invoke_checked + 148
-    frame #6: 0x0000000100f8c984 libcoreclr.dylib`start_wrapper + 512
-    frame #7: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-  thread #14, name = 'tid_3003'
-    frame #0: 0x000000019fb4d64c libsystem_kernel.dylib`__psynch_cvwait + 8
-    frame #1: 0x000000019fb8b504 libsystem_pthread.dylib`_pthread_cond_wait + 1228
-    frame #2: 0x0000000100efdaa0 libcoreclr.dylib`mono_os_cond_timedwait + 136
-    frame #3: 0x0000000100f91180 libcoreclr.dylib`mono_w32handle_timedwait_signal_handle + 340
-    frame #4: 0x0000000100f90f60 libcoreclr.dylib`mono_w32handle_wait_one + 776
-    frame #5: 0x0000000100fb1980 libcoreclr.dylib`ves_icall_System_Threading_Monitor_Monitor_wait + 196
-    frame #6: 0x0000000100f491dc libcoreclr.dylib`ves_icall_System_Threading_Monitor_Monitor_wait_raw + 88
-    frame #7: 0x0000000100e7d7e8 libcoreclr.dylib`do_icall + 240
-    frame #8: 0x0000000100e7beac libcoreclr.dylib`do_icall_wrapper + 412
-    frame #9: 0x0000000100e77310 libcoreclr.dylib`mono_interp_exec_method + 12612
-    frame #10: 0x0000000100e72b70 libcoreclr.dylib`interp_runtime_invoke + 244
-    frame #11: 0x0000000100f7593c libcoreclr.dylib`mono_runtime_invoke_checked + 148
-    frame #12: 0x0000000100f8c984 libcoreclr.dylib`start_wrapper + 512
-    frame #13: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-  thread #15, name = 'tid_3203'
-    frame #0: 0x000000019fb4d64c libsystem_kernel.dylib`__psynch_cvwait + 8
-    frame #1: 0x000000019fb8b504 libsystem_pthread.dylib`_pthread_cond_wait + 1228
-    frame #2: 0x0000000100efdaa0 libcoreclr.dylib`mono_os_cond_timedwait + 136
-    frame #3: 0x0000000100f91180 libcoreclr.dylib`mono_w32handle_timedwait_signal_handle + 340
-    frame #4: 0x0000000100f90f60 libcoreclr.dylib`mono_w32handle_wait_one + 776
-    frame #5: 0x0000000100fb1980 libcoreclr.dylib`ves_icall_System_Threading_Monitor_Monitor_wait + 196
-    frame #6: 0x0000000100f491dc libcoreclr.dylib`ves_icall_System_Threading_Monitor_Monitor_wait_raw + 88
-    frame #7: 0x0000000100e7d7e8 libcoreclr.dylib`do_icall + 240
-    frame #8: 0x0000000100e7beac libcoreclr.dylib`do_icall_wrapper + 412
-    frame #9: 0x0000000100e77310 libcoreclr.dylib`mono_interp_exec_method + 12612
-    frame #10: 0x0000000100e72b70 libcoreclr.dylib`interp_runtime_invoke + 244
-    frame #11: 0x0000000100f7593c libcoreclr.dylib`mono_runtime_invoke_checked + 148
-    frame #12: 0x0000000100f8c984 libcoreclr.dylib`start_wrapper + 512
-    frame #13: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-  thread #16, name = 'tid_3803'
-    frame #0: 0x000000019fb4d64c libsystem_kernel.dylib`__psynch_cvwait + 8
-    frame #1: 0x000000019fb8b504 libsystem_pthread.dylib`_pthread_cond_wait + 1228
-    frame #2: 0x0000000100efdaa0 libcoreclr.dylib`mono_os_cond_timedwait + 136
-    frame #3: 0x0000000100f91180 libcoreclr.dylib`mono_w32handle_timedwait_signal_handle + 340
-    frame #4: 0x0000000100f90f60 libcoreclr.dylib`mono_w32handle_wait_one + 776
-    frame #5: 0x0000000100fb1980 libcoreclr.dylib`ves_icall_System_Threading_Monitor_Monitor_wait + 196
-    frame #6: 0x0000000100f491dc libcoreclr.dylib`ves_icall_System_Threading_Monitor_Monitor_wait_raw + 88
-    frame #7: 0x0000000100e7d7e8 libcoreclr.dylib`do_icall + 240
-    frame #8: 0x0000000100e7beac libcoreclr.dylib`do_icall_wrapper + 412
-    frame #9: 0x0000000100e77310 libcoreclr.dylib`mono_interp_exec_method + 12612
-    frame #10: 0x0000000100e72b70 libcoreclr.dylib`interp_runtime_invoke + 244
-    frame #11: 0x0000000100f7593c libcoreclr.dylib`mono_runtime_invoke_checked + 148
-    frame #12: 0x0000000100f8c984 libcoreclr.dylib`start_wrapper + 512
-    frame #13: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-  thread #17, name = 'tid_3303'
-    frame #0: 0x000000019fb4d64c libsystem_kernel.dylib`__psynch_cvwait + 8
-    frame #1: 0x000000019fb8b504 libsystem_pthread.dylib`_pthread_cond_wait + 1228
-    frame #2: 0x0000000100efdaa0 libcoreclr.dylib`mono_os_cond_timedwait + 136
-    frame #3: 0x0000000100f91180 libcoreclr.dylib`mono_w32handle_timedwait_signal_handle + 340
-    frame #4: 0x0000000100f90f60 libcoreclr.dylib`mono_w32handle_wait_one + 776
-    frame #5: 0x0000000100fb1980 libcoreclr.dylib`ves_icall_System_Threading_Monitor_Monitor_wait + 196
-    frame #6: 0x0000000100f491dc libcoreclr.dylib`ves_icall_System_Threading_Monitor_Monitor_wait_raw + 88
-    frame #7: 0x0000000100e7d7e8 libcoreclr.dylib`do_icall + 240
-    frame #8: 0x0000000100e7beac libcoreclr.dylib`do_icall_wrapper + 412
-    frame #9: 0x0000000100e77310 libcoreclr.dylib`mono_interp_exec_method + 12612
-    frame #10: 0x0000000100e72b70 libcoreclr.dylib`interp_runtime_invoke + 244
-    frame #11: 0x0000000100f7593c libcoreclr.dylib`mono_runtime_invoke_checked + 148
-    frame #12: 0x0000000100f8c984 libcoreclr.dylib`start_wrapper + 512
-    frame #13: 0x000000019fb8af3c libsystem_pthread.dylib`_pthread_start + 136
-(lldb) quit 1
-RESULT: CRASHED (see run.log)
+[  1.701] [host] starting .NET (172 libraries, interpreter only, like the iPhone)
+[  1.789] [host] .NET started
+[  1.791] [host] loading ScriptHookV .NET
+[  3.209] [net] ScriptHookV .NET start failed: System.TypeLoadException: Parent class failed to load, due to: Could not load type of field 'SHVDN.Compiler.CompilerPreset:<References>k__BackingField' (1) due to: Could not load file or assembly 'Microsoft.CodeAnalysis, Version=5.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. assembly:/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/out-shvdn-ios/dotnet/ScriptHookVDotNet.dll type:CompilerPreset member:(null)
+   at System.RuntimeType.GetMethodsByName(String name, BindingFlags bindingAttr, MemberListType listType, RuntimeType reflectedType)
+   at System.R
+[  3.209] [net] ScriptHookV .NET started in 1418 ms (its log: Documents/ScriptHookVDotNet.log)
+[ 20.163] [game] the player now has 2 stars
+[ 30.095] [game] pressing F7
+[ 33.244] [net] last 30s: 225 ticks, 37.29 ms per tick, 53 frames where scripts ran past the frame budget
+[ 44.896] [game] frame 400
+[ 63.351] [net] last 30s: 209 ticks, 51.38 ms per tick, 72 frames where scripts ran past the frame budget
+[ 75.146] [game] natives called by the mods (26 different):
+      3582  PLAYER_ID (4f8644af03d0e0d6)
+      1647  GET_PLAYER_PED (43a66c31c68491c0)
+         2  GET_FILENAME_FOR_AUDIO_CONVERSATION (7b5280eba9840c72)
+        29  REQUEST_SCALEFORM_MOVIE (11fe353cf9733e6f)
+        14  REQUEST_STREAMED_TEXTURE_DICT (dfa2ef8e04127dd5)
+      1756  GET_PLAYER_WANTED_LEVEL (e28e54788ce8f12d)
+       190  IS_MODEL_VALID (c0296a2edf545e92)
+       178  ARE_PLAYER_STARS_GREYED_OUT (0a6eb355ee14a2db)
+      1608  IS_PED_HUMAN (b980061da992779d)
+      1608  GET_PED_TYPE (ff059e1e4c01e63c)
+       527  IS_HUD_HIDDEN (a86478c6958735c5)
+       527  IS_PLAYER_SWITCH_IN_PROGRESS (d9d2cfff49fab35f)
+         1  SET_PLAYER_WANTED_LEVEL (39ff19c64ef7da5b)
+         1  SET_PLAYER_WANTED_LEVEL_NOW (e0a7d1e497ffcd6f)
+       396  SET_MAX_WANTED_LEVEL (aa5f02db48d704b9)
+       396  IS_PED_SHOOTING (34616828cd07f1a1)
+      4048  GET_ENTITY_COORDS (3fef770d40960d5a)
+      1232  IS_ENTITY_DEAD (5f9532f3b5cc2551)
+       704  IS_PED_FACING_PED (d71649db0a545aa3)
+       395  GET_MAX_WANTED_LEVEL (462e0db9b137dc5f)
+         1  GET_CLOCK_YEAR (961777e64bdaf717)
+         1  GET_CLOCK_MONTH (bbc72712e80257a1)
+         1  GET_CLOCK_DAY_OF_MONTH (3d10bc92a4db1d35)
+         2  BEGIN_TEXT_COMMAND_THEFEED_POST (202709f4c58a0424)
+         4  ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME (6c188be134e074aa)
+         2  END_TEXT_COMMAND_THEFEED_POST_TICKER (2ed7843f8f801023)
+[ 75.147] [host] SURVIVED 75 s with the mods running
+Process 7545 exited with status = 0 (0x00000000)
+Process 7545 launched: '/Users/runner/work/gta5-ios-dotnet/gta5-ios-dotnet/hwork/host' (arm64)
+RESULT: the mods ran without crashing
