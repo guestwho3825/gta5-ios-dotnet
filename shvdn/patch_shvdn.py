@@ -109,4 +109,7 @@ SDOM = C + 'Scripting/ScriptDomain.cs'
 edit(SDOM, 'script.StopwatchForTimeout.Restart();', 'IosEntities.Crumb(script.Name);  // iOS: last-moments breadcrumb\n                script.StopwatchForTimeout.Restart();')
 edit(SDOM, 'Log.Message(Log.Level.Debug, "Instantiating script ", scriptType.FullName, " ...");',
      'Log.Message(Log.Level.Debug, "Instantiating script ", scriptType.FullName, " ...");\n            IosEntities.Crumb("creating " + scriptType.FullName);  // iOS\n            if (IosEntities.IsDisabled(scriptType.FullName)) { Log.Message(Log.Level.Warning, "Not starting ", scriptType.FullName, ": it crashed the game before (remove it from posthook/disabled-scripts.txt to try again)."); return null; }')
+# ---- a script thread must never let an error escape (on iOS that ends the game): stop that script, log it ----
+regex(SC, r'(catch \(ThreadAbortException ex\)\s*\{\s*Log\.Message\(Log\.Level\.Warning, "Aborted script ", Name, "\.", Environment\.NewLine, ex\.StackTrace\);\s*\})',
+      r'\1\n            catch (Exception ex)  // iOS\n            {\n                IsRunning = false;\n                try { Log.Message(Log.Level.Error, "Script ", Name, " stopped by an error: ", ex.ToString()); } catch { }\n                try { _waitEvent.Release(); } catch { }\n            }')
 print("SHVDN patched for iOS")

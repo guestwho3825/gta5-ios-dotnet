@@ -34,6 +34,21 @@ namespace PostHook
                 string app = Environment.GetEnvironmentVariable("PH_APP");
                 Directory.SetCurrentDirectory(docs);
 
+                // an error nobody caught on any thread (a mod's own thread, a timer, a task): write it down first,
+                // before the runtime deals with it (Files > GTA V > posthook > errors.txt)
+                AppDomain.CurrentDomain.UnhandledException += (s, e) =>
+                {
+                    try
+                    {
+                        Directory.CreateDirectory(Path.Combine(docs, "posthook"));
+                        File.AppendAllText(Path.Combine(docs, "posthook", "errors.txt"),
+                            $"[{DateTime.Now:HH:mm:ss}] error nobody caught (thread \"{System.Threading.Thread.CurrentThread.Name}\"):\n{e.ExceptionObject}\n\n");
+                        SHVDN.Log.Message(SHVDN.Log.Level.Error, "Error nobody caught: ", e.ExceptionObject?.ToString());
+                    }
+                    catch { }
+                };
+                System.Threading.Tasks.TaskScheduler.UnobservedTaskException += (s, e) => e.SetObserved();
+
                 // calls into ScriptHookV / Windows: point them at our ScriptHook
                 NativeLibrary.SetDllImportResolver(typeof(SHVDN.ScriptHookVDotNet).Assembly, (name, asm, path) => Resolve(name));
                 AssemblyLoadContext.Default.ResolvingUnmanagedDll += (asm, name) => Resolve(name);  // mods' own imports
