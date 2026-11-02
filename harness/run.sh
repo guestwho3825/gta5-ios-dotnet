@@ -46,6 +46,21 @@ if dotnet build "$W/lemon/LemonUI.SHVDN3/LemonUI.SHVDN3.csproj" -c Release -nolo
 else grep -E "error" "$OUT"/lemon*-build.log | head -10; fi
 ls -la "$DOCS/scripts"
 
+# benchmark: popular open-source .NET mods, built from their public source
+bench() {  # repo commit name srcsubdir uses_lemon
+  local repo=$1 commit=$2 name=$3 sub=$4 lemon=$5 d="$W/bench/$3"
+  git clone -q https://github.com/$repo "$d" && git -C "$d" checkout -q $commit || { echo "BENCH $name: clone failed"; return; }
+  local L=""; [ "$lemon" = 1 ] && L="$W/lemonout/LemonUI.SHVDN3.dll"
+  if dotnet build "$H/mods/Generic.csproj" -c Release -nologo -p:SRC="$d/$sub" -p:NAME="$name" -p:LEMONDLL="$L" -o "$W/bench-out/$name" > "$OUT/bench-$name-build.log" 2>&1; then
+    cp "$W/bench-out/$name/$name.dll" "$DOCS/scripts/"; echo "BENCH $name: built"
+  else echo "BENCH $name: build failed"; grep -E " error " "$OUT/bench-$name-build.log" | sed 's/.*error/error/' | sort -u | head -5; fi
+}
+bench lucasvinbr/GTA5GangMod 42bc3d5c07a9965c75c7eb18a96d19914bedca9f GangAndTurfMod . 1
+bench kagikn/StuntBonusV eecb3dd87be2cb38a8d386cb6fd3528778629645 StuntBonusV StuntBonusV 0
+bench waynieoaks/I-surrender 79c6d445c21a835d8bdb7ce11969ea4f951efe5a Surrender . 0
+bench I-E-A-I-A-I-O/VigilanteMissions d2b3dea3afe8191a34f78a12ce7016ebffd8091b VigilanteMissions . 1
+ls "$DOCS/scripts"
+
 echo "== 4. native parts (the iPhone's ScriptHook .NET server code + the fake game)"
 clang -O1 -g -dynamiclib -o "$W/libfakegame.dylib" "$H/fakegame.c" "$H/native/shvdn_host.c" "$H/native/shvdn_exports.S" "$H/native/pathfix.c" || exit 1
 clang -O1 -g -o "$W/host" "$H/host.c" || exit 1
